@@ -52,27 +52,27 @@ def test_dictionary_keys():
     }
 
     key = "first_name"
-    assert FILL_ME_IN == father["last_name"]
-    assert FILL_ME_IN == father["age"]
-    assert FILL_ME_IN == father[key]
+    assert father["last_name"] == FILL_ME_IN
+    assert father["age"] == FILL_ME_IN
+    assert father[key] == FILL_ME_IN
 
 
 # Exercise 5
 def test_removing_dict_keys():
     brother_in_law = {
-        "first_name": "Michael",
-        "last_name": "Bluth",
-        "age": 33,
+        "name": "Tobias",
+        "lastname": "Funke",
+        "job": "therapist",
     }
 
-    assert FILL_ME_IN == brotherInLaw["job"]
+    assert brother_in_law["job"] == FILL_ME_IN
 
-    del brotherInLaw["job"]
-    assert FILL_ME_IN == brotherInLaw["job"]
+    del brother_in_law["job"]
+    assert brother_in_law == FILL_ME_IN
 
 
 # Exercise 6
-def test_removing_dict_keys():
+def test_nested_dictionaries():
     bluth_family = {
         "father": {
             "name": "George",
@@ -84,6 +84,6 @@ def test_removing_dict_keys():
         "daughters": [{"name": "Lindsay"}],
     }
 
-    assert FILL_ME_IN == bluthFamily["father"]["name"]
-    assert bluthFamily["mother"]["name"] == FILL_ME_IN
-    assert bluthFamily["daughters"][FILL_ME_IN][FILL_ME_IN] == "Lindsay"
+    assert bluth_family["father"]["name"] == FILL_ME_IN
+    assert bluth_family["mother"]["name"] == FILL_ME_IN
+    assert bluth_family["daughters"][FILL_ME_IN][FILL_ME_IN] == "Lindsay"
