@@ -1,4 +1,4 @@
-# Exercise 1
+# Exercise 0
 # This function should take a list as an argument and return True if the list is empty, False otherwise.
 def is_empty_list():
     pass
@@ -10,7 +10,7 @@ def test_is_empty_list():
     assert test_is_empty_list(["a"]) == False
 
 
-# Exercise 2
+# Exercise 1
 # This function should take an dictionary representing a person and information about whether they like to code
 # A person will take this form:
 # {
@@ -39,7 +39,7 @@ def test_create_profile_description():
     )
 
 
-# Exercise 3
+# Exercise 2
 # This function should take a string representing a traffic light colour as an argument
 # It will be one of "red", "green" or "amber" in either uppercase or lowercase
 # You should return a corresponding message
@@ -60,7 +60,7 @@ def test_read_traffic_light():
     assert read_traffic_light("RED") == "STOP!"
 
 
-# Exercise 4
+# Exercise 3
 # This function should take any number of arguments and return the number of arguments passed into the function
 def how_many_arguments():
     pass
@@ -73,7 +73,7 @@ def test_how_many_arguments():
     assert how_many_arguments("the", "meaning", "of", "life", "is", 42) == 6
 
 
-# Exercise 5
+# Exercise 4
 # This function should take a dictionary representing a coin machine and a string representing a coin as its arguments
 # A coin machine object will take this form:
 # {
@@ -120,7 +120,7 @@ def test_update_coin_machine():
     }
 
 
-# Exercise 6
+# Exercise 5
 
 # This function should take a list representing coordinates - an x position and a y position - and a string representing a direction
 # It should return a new pair of coordinates, with the coords updated by moving either x or y 1 unit in a particular direction
@@ -141,7 +141,7 @@ def test_update_position():
     assert test_update_position([7, 50], "right") == [8, 50]
 
 
-# Exercise 7
+# Exercise 6
 # This function should take any value as an argument, and return true if it is falsy, and false otherwise
 def is_falsy(value):
     return bool(value) == False
@@ -156,7 +156,7 @@ def test_is_falsy():
     assert is_falsy(True) == False
 
 
-# Exercise 8
+# Exercise 7
 # This function should take a number representing a dice roll and a string representing a coin toss as its arguments
 # A dice roll will be a number between 1 and 6
 # A coin toss will be "H" or "T" representing heads or tails
@@ -174,7 +174,7 @@ def test_check_game():
     assert check_game(6, "T") == False
 
 
-# Exercise 10
+# Exercise 8
 # In this function, a "coin collection" is represented by a list containing 4 other nested lists, each representing a slot in the collection in the following way:
 #  1p   2p   5p   10p
 # [[],  [],  [],  []] <-- coinCollection
