@@ -18,11 +18,11 @@ def test_is_empty_list():
 #   "likesToCode": True
 # }
 
-# If the 'likesToCode' property is true, then you should return a string of the form
+# If the 'likesToCode' key is true, then you should return a string of the form
 #   "My name is Mitch and I like to code."
 
 
-# If the 'likesToCode' property is false, the string should look like
+# If the 'likesToCode' key is false, the string should look like
 #   "My name is Mitch and I don't like to code."
 def create_profile_description():
     pass
