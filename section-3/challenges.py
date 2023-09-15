@@ -30,11 +30,11 @@ def create_profile_description():
 
 def test_create_profile_description():
     assert (
-        create_profile_description({"name": "Mitch", "likesToCode": true})
+        create_profile_description({"name": "Mitch", "likesToCode": True})
         == "My name is Mitch and I like to code."
     )
     assert (
-        create_profile_description({"name": "Lisa", "likesToCode": false})
+        create_profile_description({"name": "Lisa", "likesToCode": False})
         == "My name is Lisa and I don't like to code."
     )
 
@@ -144,16 +144,19 @@ def test_update_position():
 # Exercise 6
 # This function should take any value as an argument, and return true if it is falsy, and false otherwise
 def is_falsy(value):
-    return bool(value) == False
+    pass
 
 
 def test_is_falsy():
     assert is_falsy(False) == True
+    assert is_falsy(True) == False
     assert is_falsy("") == True
     assert is_falsy(0) == True
     assert is_falsy({}) == True
+    assert is_falsy({"a": 1}) == False
+    assert is_falsy([]) == True
+    assert is_falsy([1, 2, 3]) == False
     assert is_falsy(None) == True
-    assert is_falsy(True) == False
 
 
 # Exercise 7
