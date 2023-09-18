@@ -1,30 +1,30 @@
-# This function should take a string as its argument and return True if each character appears only once and False otherwise
-def contains_no_repeats(str):
+# If we list all the whole numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9.
+# The sum of these multiples is 23.
+
+# Finish the solution so that it returns the sum of all the multiples of 3 or 5 below the limit passed in as an argument.
+# Additionally, if the number is negative, return 0.
+
+# Note: If the number is a multiple of both 3 and 5, only count it once! */
+
+
+def find_total_of_multiples(limit):
     pass
 
 
-def test_contains_no_repeats():
-    # contains_no_repeats() returns True for an empty string
-    assert contains_no_repeats("") == True
+def test_find_total_of_multiples():
+    # find_total_of_multiples() return zero for negative numbers
+    assert find_total_of_multiples(-1) == 0
 
-    # contains_no_repeats() returns False for a single repeated character
-    assert contains_no_repeats("oo") == False
-    assert contains_no_repeats("zzz") == False
+    # find_total_of_multiples() returns first multiple of 3
+    assert find_total_of_multiples(4) == 3
 
-    # contains_no_repeats() returns True when each character appears only once
-    assert contains_no_repeats("dog") == True
-    assert contains_no_repeats("cat") == True
-    assert contains_no_repeats("abcde") == True
+    # find_total_of_multiples() returns sum of multiples of 3 or 5  below limit
 
-    # contains_no_repeats() returns False if any characters are repeated
-    assert contains_no_repeats("dooog") == False
-    assert contains_no_repeats("iHaveRepeats") == False
-    assert contains_no_repeats("anat") == False
-    assert contains_no_repeats("abcdea") == False
+    assert find_total_of_multiples(6) == 8
+    assert find_total_of_multiples(10) == 23
 
 
 # ---------------------------------------------------------------------------
-
 
 # In a factory a printer prints labels for boxes. For one kind of boxes the printer has to use colors which are named with letters from a to m.
 # The colours used by the printer are recorded in a string.
@@ -62,35 +62,6 @@ def test_count_printer_errors():
 
 
 # ---------------------------------------------------------------------------
-
-# If we list all the whole numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9.
-# The sum of these multiples is 23.
-
-# Finish the solution so that it returns the sum of all the multiples of 3 or 5 below the limit passed in as an argument.
-# Additionally, if the number is negative, return 0.
-
-# Note: If the number is a multiple of both 3 and 5, only count it once! */
-
-
-def find_total_of_multiples(limit):
-    pass
-
-
-def test_find_total_of_multiples():
-    # find_total_of_multiples() return zero for negative numbers
-    assert find_total_of_multiples(-1) == 0
-
-    # find_total_of_multiples() returns first multiple of 3
-    assert find_total_of_multiples(4) == 3
-
-    # find_total_of_multiples() returns sum of multiples of 3 or 5  below limit
-
-    assert find_total_of_multiples(6) == 8
-    assert find_total_of_multiples(10) == 23
-
-
-# ---------------------------------------------------------------------------
-
 # Ordinal suffixes are the letters we put after a number:
 # E.g. "nd" is an ordinal suffix as we'd write 2nd and "st" is an ordinal suffix as we'd write 1st etc
 
@@ -140,3 +111,32 @@ def test_get_ordinal_suffix():
     # getOrdinalSuffix() returns 'th' for any other numbers
     assert getOrdinalSuffix(27) == "th"
     assert getOrdinalSuffix(98) == "th"
+
+
+# ---------------------------------------------------------------------------
+
+
+# This function should take a string as its argument and
+# return True if each character appears only once and False otherwise
+def contains_no_repeats(str):
+    pass
+
+
+def test_contains_no_repeats():
+    # contains_no_repeats() returns True for an empty string
+    assert contains_no_repeats("") == True
+
+    # contains_no_repeats() returns False for a single repeated character
+    assert contains_no_repeats("oo") == False
+    assert contains_no_repeats("zzz") == False
+
+    # contains_no_repeats() returns True when each character appears only once
+    assert contains_no_repeats("dog") == True
+    assert contains_no_repeats("cat") == True
+    assert contains_no_repeats("abcde") == True
+
+    # contains_no_repeats() returns False if any characters are repeated
+    assert contains_no_repeats("dooog") == False
+    assert contains_no_repeats("iHaveRepeats") == False
+    assert contains_no_repeats("anat") == False
+    assert contains_no_repeats("abcdea") == False
