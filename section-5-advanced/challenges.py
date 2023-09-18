@@ -140,3 +140,37 @@ def test_contains_no_repeats():
     assert contains_no_repeats("iHaveRepeats") == False
     assert contains_no_repeats("anat") == False
     assert contains_no_repeats("abcdea") == False
+
+
+# ---------------------------------------------------------------------------
+
+# When users are signing up for our service we ask them pick a username.
+# Each person's username must be unique and we will write a function to check if their usernames have
+# already been taken or not
+
+# This function should take a list of existing usernames and any number of additional usernames to check
+# It should return True if all the new usernames are available, and False if any of them already exist
+
+
+def check_usernames_available(usernames, *names):
+    pass
+
+
+def test_check_usernames_available():
+    # check_usernames_available returns True for a single available username
+    assert check_usernames_available(["Roy", "Moss"], "Jen") == True
+
+    # check_usernames_available returns False for a single username that is taken
+    assert check_usernames_available(["Roy", "Moss"], "Moss") == False
+
+    # check_usernames_available returns True for multiple usernames that are available
+    assert check_usernames_available(["Roy", "Moss"], "Jen", "Douglas") == True
+
+    # check_usernames_available returns False for multiple usernames that are available
+    assert check_usernames_available(["Roy", "Moss"], "Roy", "Moss") == False
+
+    # check_usernames_available returns False if a single username is not available
+    assert check_usernames_available(["Roy", "Moss"], "Jen", "Moss") == False
+
+    # check_usernames_available returns True if no new usernames are passed
+    assert check_usernames_available(["Roy", "Moss"]) == True
