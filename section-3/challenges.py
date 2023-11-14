@@ -1,3 +1,6 @@
+import pytest
+
+
 # Exercise 0
 # This function should take a list as an argument and return True if the list is empty, False otherwise.
 def is_empty_list():
@@ -28,6 +31,7 @@ def create_profile_description():
     pass
 
 
+@pytest.mark.skip()
 def test_create_profile_description():
     assert (
         create_profile_description({"name": "Mitch", "likesToCode": True})
@@ -49,6 +53,7 @@ def read_traffic_light():
     pass
 
 
+@pytest.mark.skip()
 def test_read_traffic_light():
     assert read_traffic_light("green") == "GO!"
     assert read_traffic_light("GREEN") == "GO!"
@@ -66,6 +71,7 @@ def how_many_arguments():
     pass
 
 
+@pytest.mark.skip()
 def test_how_many_arguments():
     assert how_many_arguments("a", "b", "c") == 3
     assert how_many_arguments() == 0
@@ -87,6 +93,7 @@ def update_coin_machine():
     pass
 
 
+@pytest.mark.skip()
 def test_update_coin_machine():
     assert update_coin_machine({"1p": 0, "2p": 0, "5p": 0, "10p": 0}, "1p") == {
         "1p": 1,
@@ -134,6 +141,7 @@ def update_position():
     pass
 
 
+@pytest.mark.skip()
 def test_update_position():
     assert test_update_position([10, 10], "up") == [10, 11]
     assert test_update_position([0, 0], "down") == [0, -1]
@@ -147,6 +155,7 @@ def is_falsy(value):
     pass
 
 
+@pytest.mark.skip()
 def test_is_falsy():
     assert is_falsy(False) == True
     assert is_falsy(True) == False
@@ -169,6 +178,7 @@ def check_game():
     pass
 
 
+@pytest.mark.skip()
 def test_check_game():
     assert check_game(3, "H") == True
     assert check_game(4, "H") == True
@@ -178,27 +188,31 @@ def test_check_game():
 
 
 # Exercise 8
-# In this function, a "coin collection" is represented by a list containing 4 other nested lists, each representing a slot in the collection in the following way:
-#  1p   2p   5p   10p
-# [[],  [],  [],  []] <-- coinCollection
-# This should take two arguments, a coin collection list and a string representing a coin, and return an updated version of the given list
-# with the coin added at the appropriate position
+# In this function, a "coin collection" is represented by a list containing 4
+#  other nested lists, each representing a slot in the collection in the
+#  following way:
+#        1p   2p   5p   10p
+#       [[],  [],  [],  []] <-- coinCollection
+# This should take two arguments, a coin collection list and a
+#   string representing a coin, and return an updated version of the given
+#   list with the coin added at the appropriate position
 def add_coins():
     pass
 
 
+@pytest.mark.skip()
 def test_add_coins():
-    assert addCoins([[], [], [], []], "1p") == [["1p"], [], [], []]
-    assert addCoins([[], [], [], []], "2p") == [[], ["2p"], [], []]
-    assert addCoins([[], ["2p"], [], []], "2p") == [[], ["2p", "2p"], [], []]
-    assert addCoins([[], [], [], []], "5p") == [[], [], ["5p"], []]
-    assert addCoins([["1p"], [], [], ["10p", "10p"]], "2p") == [
+    assert add_coins([[], [], [], []], "1p") == [["1p"], [], [], []]
+    assert add_coins([[], [], [], []], "2p") == [[], ["2p"], [], []]
+    assert add_coins([[], ["2p"], [], []], "2p") == [[], ["2p", "2p"], [], []]
+    assert add_coins([[], [], [], []], "5p") == [[], [], ["5p"], []]
+    assert add_coins([["1p"], [], [], ["10p", "10p"]], "2p") == [
         ["1p"],
         ["2p"],
         [],
         ["10p", "10p"],
     ]
-    assert addCoins([[], [], ["5p", "5p"], []], "5p") == [
+    assert add_coins([[], [], ["5p", "5p"], []], "5p") == [
         [],
         [],
         ["5p", "5p", "5p"],
@@ -206,4 +220,5 @@ def test_add_coins():
     ]
 
 
-#  Mark your progress on the Learn 2 Code platform before moving on to the next set of challenges!
+# Mark your progress on the Learn 2 Code platform before moving on to the
+#  next set of challenges!

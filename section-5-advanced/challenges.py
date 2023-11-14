@@ -1,10 +1,15 @@
-# If we list all the whole numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9.
+import pytest
+
+
+# If we list all the whole numbers below 10 that are multiples of 3 or 5, we
+#  get 3, 5, 6 and 9.
 # The sum of these multiples is 23.
 
-# Finish the solution so that it returns the sum of all the multiples of 3 or 5 below the limit passed in as an argument.
+# Finish the solution so that it returns the sum of all the multiples of 3
+#  or 5 below the limit passed in as an argument.
 # Additionally, if the number is negative, return 0.
 
-# Note: If the number is a multiple of both 3 and 5, only count it once! */
+# Note: If the number is a multiple of both 3 and 5, only count it once!
 
 
 def find_total_of_multiples(limit):
@@ -26,16 +31,24 @@ def test_find_total_of_multiples():
 
 # ---------------------------------------------------------------------------
 
-# In a factory a printer prints labels for boxes. For one kind of boxes the printer has to use colors which are named with letters from a to m.
+# In a factory a printer prints labels for boxes. For one kind of boxes the
+#  printer has to use colors which are named with letters from a to m.
 # The colours used by the printer are recorded in a string.
 
-# For example a "good" control string would be aaabbbbhaijjjm meaning:
-# that the printer used colour 'a' three times , colour 'b' four times , colour 'h' one time and so on.
+# For example a "good" control string would be aaabbbbhaijjjm meaning that
+#  the printer used:
+# - colour 'a' three times
+# - colour 'b' four times
+# - colour 'h' one time
+# and so on.
 
-# Sometimes there are problems and a "bad" control string is produced e.g. aaaxbbbbyyhwawiwjjjwwm with letters not from a to m.
-# Write a function named count_printer_errors which given a string will return the error rate of the printer.
+# Sometimes there are problems and a "bad" control string is produced
+#  e.g. aaaxbbbbyyhwawiwjjjwwm with letters not from a to m.
+# Write a function named count_printer_errors which given a string will
+#  return the error rate of the printer.
 
-# You should return a string representing a fraction whose numerator is the number of errors and the denominator the length of the control string.
+# You should return a string representing a fraction whose numerator is the
+#  number of errors and the denominator the length of the control string.
 
 # Example:
 # control = "aaabbbbhaijjjm"
@@ -49,6 +62,7 @@ def count_printer_errors():
     pass
 
 
+@pytest.mark.skip()
 def test_count_printer_errors():
     # countPrinterErrors() should return zero for an empty control string
     assert count_printer_errors("") == "0/0"
@@ -63,17 +77,21 @@ def test_count_printer_errors():
 
 # ---------------------------------------------------------------------------
 # Ordinal suffixes are the letters we put after a number:
-# E.g. "nd" is an ordinal suffix as we'd write 2nd and "st" is an ordinal suffix as we'd write 1st etc
+# E.g. "nd" is an ordinal suffix as we'd write 2nd and "st" is an ordinal
+#  suffix as we'd write 1st etc
 
-# This function should take a number as an argument and should return the corresponding ordinal suffix
+# This function should take a number as an argument and should return the
+#  corresponding ordinal suffix
 
-# See here for more details: https://www.grammarly.com/blog/how-to-write-ordinal-numbers-correctly/
+# See here for more details:
+#  https://www.grammarly.com/blog/how-to-write-ordinal-numbers-correctly/
 
 
 def get_ordinal_suffix(num):
     pass
 
 
+@pytest.mark.skip()
 def test_get_ordinal_suffix():
     # getOrdinalSuffix() returns 'st' when given 1
     assert getOrdinalSuffix(1) == "st"
@@ -89,7 +107,8 @@ def test_get_ordinal_suffix():
     assert getOrdinalSuffix(7) == "th"
     assert getOrdinalSuffix(9) == "th"
 
-    # getOrdinalSuffix() returns 'th' given any value between 10 and 20 inclusive
+    # getOrdinalSuffix() returns 'th' given any value between 10 and
+    #  20 inclusive
     assert getOrdinalSuffix(10) == "th"
     assert getOrdinalSuffix(11) == "th"
     assert getOrdinalSuffix(15) == "th"
@@ -122,6 +141,7 @@ def contains_no_repeats(str):
     pass
 
 
+@pytest.mark.skip()
 def test_contains_no_repeats():
     # contains_no_repeats() returns True for an empty string
     assert contains_no_repeats("") == True
@@ -145,31 +165,39 @@ def test_contains_no_repeats():
 # ---------------------------------------------------------------------------
 
 # When users are signing up for our service we ask them pick a username.
-# Each person's username must be unique and we will write a function to check if their usernames have
+# Each person's username must be unique and we will write a function to check
+#  if their usernames have
 # already been taken or not
 
-# This function should take a list of existing usernames and any number of additional usernames to check
-# It should return True if all the new usernames are available, and False if any of them already exist
+# This function should take a list of existing usernames and any number of
+#  additional usernames to check
+# It should return True if all the new usernames are available, and False if
+#  any of them already exist
 
 
 def check_usernames_available(usernames, *names):
     pass
 
 
+@pytest.mark.skip()
 def test_check_usernames_available():
     # check_usernames_available returns True for a single available username
     assert check_usernames_available(["Roy", "Moss"], "Jen") == True
 
-    # check_usernames_available returns False for a single username that is taken
+    # check_usernames_available returns False for a single username that
+    #  is taken
     assert check_usernames_available(["Roy", "Moss"], "Moss") == False
 
-    # check_usernames_available returns True for multiple usernames that are available
+    # check_usernames_available returns True for multiple usernames that
+    #  are available
     assert check_usernames_available(["Roy", "Moss"], "Jen", "Douglas") == True
 
-    # check_usernames_available returns False for multiple usernames that are available
+    # check_usernames_available returns False for multiple usernames that
+    #  are available
     assert check_usernames_available(["Roy", "Moss"], "Roy", "Moss") == False
 
-    # check_usernames_available returns False if a single username is not available
+    # check_usernames_available returns False if a single username is
+    #  not available
     assert check_usernames_available(["Roy", "Moss"], "Jen", "Moss") == False
 
     # check_usernames_available returns True if no new usernames are passed

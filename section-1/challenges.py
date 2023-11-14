@@ -1,4 +1,7 @@
-# Exercise 1
+import pytest
+
+
+# Exercise 0
 def test_multi_type_list():
     multi_type_list = ["I am a string", 42, True, [1, 2, 3]]
 
@@ -8,7 +11,8 @@ def test_multi_type_list():
     assert type(multi_type_list[3]) == FILL_ME_IN
 
 
-# Exercise 2
+# Exercise 1
+@pytest.mark.skip()
 def test_list_mutation():
     letters = ["a", "b", "c"]
     letters.append("d")
@@ -22,7 +26,8 @@ def test_list_mutation():
     assert letters == FILL_ME_IN
 
 
-# Exercise 3
+# Exercise 2
+@pytest.mark.skip()
 def test_nested_lists():
     rows = [
         ["a", "b", "c"],
@@ -43,7 +48,8 @@ def test_nested_lists():
     assert rows[0][FILL_ME_IN] == "c"
 
 
-# Exercise 4
+# Exercise 3
+@pytest.mark.skip()
 def test_dictionary_keys():
     father = {
         "first_name": "Michael",
@@ -57,7 +63,8 @@ def test_dictionary_keys():
     assert father[key] == FILL_ME_IN
 
 
-# Exercise 5
+# Exercise 4
+@pytest.mark.skip()
 def test_removing_dict_keys():
     brother_in_law = {
         "name": "Tobias",
@@ -71,7 +78,8 @@ def test_removing_dict_keys():
     assert brother_in_law == FILL_ME_IN
 
 
-# Exercise 6
+# Exercise 5
+@pytest.mark.skip()
 def test_nested_dictionaries():
     bluth_family = {
         "father": {
