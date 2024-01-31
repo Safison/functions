@@ -15,9 +15,9 @@ def test_check_if_key_exists():
 
 
 def test_create_dict():
-    assert create_dict(["name", "shaq"]) == {name: "shaq"}
-    assert create_dict(["fruit", "apple"]) == {fruit: "apple"}
-    assert create_dict(["language", "haskell"]) == {language: "haskell"}
+    assert create_dict(["name", "shaq"]) == {"name": "shaq"}
+    assert create_dict(["fruit", "apple"]) == {"fruit": "apple"}
+    assert create_dict(["language", "haskell"]) == {"language": "haskell"}
 
 
 # Exercise 2
@@ -73,19 +73,19 @@ def test_move_item_to_end():
 
 def test_update_user_age():
     user1 = {
-        "admin": false,
+        "admin": False,
         "username": "xoxoAlexoxo",
         "personal_details": {"name": "Alex", "age": 39, "fav_food": "gooseberry fool"},
     }
     update_user_age(user1)
     assert user1 == {
-        "admin": false,
+        "admin": False,
         "username": "xoxoAlexoxo",
         "personal_details": {"name": "Alex", "age": 40, "fav_food": "gooseberry fool"},
     }
 
     user2 = {
-        "admin": true,
+        "admin": True,
         "username": "brum4life",
         "personal_details": {"name": "Poonam", "age": 19, "fav_food": "caviar"},
     }
