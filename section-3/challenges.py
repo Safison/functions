@@ -5,9 +5,9 @@ def is_empty_list():
 
 
 def test_is_empty_list():
-    assert test_is_empty_list([]) == True
-    assert test_is_empty_list(["a", "b", "c", "d"]) == False
-    assert test_is_empty_list(["a"]) == False
+    assert is_empty_list([]) == True
+    assert is_empty_list(["a", "b", "c", "d"]) == False
+    assert is_empty_list(["a"]) == False
 
 
 # Exercise 1
@@ -135,10 +135,10 @@ def update_position():
 
 
 def test_update_position():
-    assert test_update_position([10, 10], "up") == [10, 11]
-    assert test_update_position([0, 0], "down") == [0, -1]
-    assert test_update_position([3, 3], "left") == [2, 3]
-    assert test_update_position([7, 50], "right") == [8, 50]
+    assert update_position([10, 10], "up") == [10, 11]
+    assert update_position([0, 0], "down") == [0, -1]
+    assert update_position([3, 3], "left") == [2, 3]
+    assert update_position([7, 50], "right") == [8, 50]
 
 
 # Exercise 6
@@ -188,17 +188,17 @@ def add_coins():
 
 
 def test_add_coins():
-    assert addCoins([[], [], [], []], "1p") == [["1p"], [], [], []]
-    assert addCoins([[], [], [], []], "2p") == [[], ["2p"], [], []]
-    assert addCoins([[], ["2p"], [], []], "2p") == [[], ["2p", "2p"], [], []]
-    assert addCoins([[], [], [], []], "5p") == [[], [], ["5p"], []]
-    assert addCoins([["1p"], [], [], ["10p", "10p"]], "2p") == [
+    assert add_coins([[], [], [], []], "1p") == [["1p"], [], [], []]
+    assert add_coins([[], [], [], []], "2p") == [[], ["2p"], [], []]
+    assert add_coins([[], ["2p"], [], []], "2p") == [[], ["2p", "2p"], [], []]
+    assert add_coins([[], [], [], []], "5p") == [[], [], ["5p"], []]
+    assert add_coins([["1p"], [], [], ["10p", "10p"]], "2p") == [
         ["1p"],
         ["2p"],
         [],
         ["10p", "10p"],
     ]
-    assert addCoins([[], [], ["5p", "5p"], []], "5p") == [
+    assert add_coins([[], [], ["5p", "5p"], []], "5p") == [
         [],
         [],
         ["5p", "5p", "5p"],
