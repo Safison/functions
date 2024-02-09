@@ -93,43 +93,42 @@ def get_ordinal_suffix(num):
 
 @pytest.mark.skip()
 def test_get_ordinal_suffix():
-    # getOrdinalSuffix() returns 'st' when given 1
-    assert getOrdinalSuffix(1) == "st"
+    # get_ordinal_suffix() returns 'st' when given 1
+    assert get_ordinal_suffix(1) == "st"
 
-    # getOrdinalSuffix() returns 'nd' when given 2
-    assert getOrdinalSuffix(2) == "nd"
+    # get_ordinal_suffix() returns 'nd' when given 2
+    assert get_ordinal_suffix(2) == "nd"
 
-    # getOrdinalSuffix() returns 'rd' when given 3
-    assert getOrdinalSuffix(3) == "rd"
+    # get_ordinal_suffix() returns 'rd' when given 3
+    assert get_ordinal_suffix(3) == "rd"
 
-    # getOrdinalSuffix() returns 'th' given any single digit number above 3
-    assert getOrdinalSuffix(4) == "th"
-    assert getOrdinalSuffix(7) == "th"
-    assert getOrdinalSuffix(9) == "th"
+    # get_ordinal_suffix() returns 'th' given any single digit number above 3
+    assert get_ordinal_suffix(4) == "th"
+    assert get_ordinal_suffix(7) == "th"
+    assert get_ordinal_suffix(9) == "th"
 
-    # getOrdinalSuffix() returns 'th' given any value between 10 and
-    #  20 inclusive
-    assert getOrdinalSuffix(10) == "th"
-    assert getOrdinalSuffix(11) == "th"
-    assert getOrdinalSuffix(15) == "th"
-    assert getOrdinalSuffix(19) == "th"
-    assert getOrdinalSuffix(20) == "th"
+    # get_ordinal_suffix() returns 'th' given any value between 10 and 20 inclusive
+    assert get_ordinal_suffix(10) == "th"
+    assert get_ordinal_suffix(11) == "th"
+    assert get_ordinal_suffix(15) == "th"
+    assert get_ordinal_suffix(19) == "th"
+    assert get_ordinal_suffix(20) == "th"
 
-    # getOrdinalSuffix() returns 'st' for numbers above 20 ending in 1
-    assert getOrdinalSuffix(21) == "st"
-    assert getOrdinalSuffix(41) == "st"
+    # get_ordinal_suffix() returns 'st' for numbers above 20 ending in 1
+    assert get_ordinal_suffix(21) == "st"
+    assert get_ordinal_suffix(41) == "st"
 
-    # getOrdinalSuffix() returns 'nd' for numbers above 20 ending in 2
-    assert getOrdinalSuffix(22) == "nd"
-    assert getOrdinalSuffix(32) == "nd"
+    # get_ordinal_suffix() returns 'nd' for numbers above 20 ending in 2
+    assert get_ordinal_suffix(22) == "nd"
+    assert get_ordinal_suffix(32) == "nd"
 
-    # getOrdinalSuffix() returns 'rd' for numbers above 20 ending in 3
-    assert getOrdinalSuffix(23) == "rd"
-    assert getOrdinalSuffix(63) == "rd"
+    # get_ordinal_suffix() returns 'rd' for numbers above 20 ending in 3
+    assert get_ordinal_suffix(23) == "rd"
+    assert get_ordinal_suffix(63) == "rd"
 
-    # getOrdinalSuffix() returns 'th' for any other numbers
-    assert getOrdinalSuffix(27) == "th"
-    assert getOrdinalSuffix(98) == "th"
+    # get_ordinal_suffix() returns 'th' for any other numbers
+    assert get_ordinal_suffix(27) == "th"
+    assert get_ordinal_suffix(98) == "th"
 
 
 # ---------------------------------------------------------------------------
