@@ -1,3 +1,6 @@
+import pytest
+
+
 # Challenge 0
 # This function should return the product of two passed numbers.
 def multiply():
@@ -11,11 +14,13 @@ def test_multiply():
 
 
 # Challenge 1
-# This function should take a single argument and return its value rounded DOWN to the nearest integer.
+# This function should take a single argument and return its value rounded
+# DOWN to the nearest integer.
 def round_down():
     pass
 
 
+@pytest.mark.skip()
 def test_round_down():
     assert round_down(100.1) == 100
     assert round_down(25.5) == 25
@@ -23,11 +28,13 @@ def test_round_down():
 
 
 # Challenge 2
-# This function should take two arguments, m and n, and return m raised to the power of n.
+# This function should take two arguments, m and n, and return m raised to the
+# power of n.
 def raise_to_power():
     pass
 
 
+@pytest.mark.skip()
 def test_raise_to_power():
     assert raise_to_power(10, 3) == 1000
     assert raise_to_power(25, 2) == 625
@@ -41,6 +48,7 @@ def is_multiple_of_6():
     pass
 
 
+@pytest.mark.skip()
 def test_is_multiple_of_6():
     assert is_multiple_of_6(6) == True
     assert is_multiple_of_6(10) == False
@@ -59,6 +67,7 @@ def capitalise_first_letter():
     pass
 
 
+@pytest.mark.skip()
 def test_capitalise_first_letter():
     assert capitalise_first_letter("bang") == "Bang"
     assert capitalise_first_letter("apple") == "Apple"
@@ -74,6 +83,7 @@ def is_in_the_20th_century(year: int):
     pass
 
 
+@pytest.mark.skip()
 def test_is_in_the_20th_century():
     assert is_in_the_20th_century(1962) == True
     assert is_in_the_20th_century(1901) == True
@@ -85,8 +95,8 @@ def test_is_in_the_20th_century():
 
 
 # Challenge 6
-# This function should take a string as an argument representing a file path and
-# return True if it is an absolute path, and False otherwise.
+# This function should take a string as an argument representing a file path
+# and return True if it is an absolute path, and False otherwise.
 # HINT: all absolute file paths start with a /
 
 
@@ -94,10 +104,12 @@ def is_absolute_path():
     pass
 
 
+@pytest.mark.skip()
 def test_is_absolute_path():
     assert is_absolute_path("/Users/mitch") == True
     assert (
-        is_absolute_path("/Users/mitch/northcoders/remote_course/remote_precourse_1")
+        is_absolute_path(
+            "/Users/mitch/northcoders/remote_course/remote_precourse_1")
         == True
     )
     assert is_absolute_path("../composers") == False
@@ -115,6 +127,7 @@ def get_char_code():
     pass
 
 
+@pytest.mark.skip()
 def test_get_char_code():
     assert get_char_code("A") == "The ASCII code for A is 65"
     assert get_char_code("b") == "The ASCII code for b is 98"
@@ -133,16 +146,20 @@ def create_list():
     pass
 
 
+@pytest.mark.skip()
 def test_create_list():
     assert create_list(3, "!") == ["!", "!", "!"]
     assert create_list(5, "a") == ["a", "a", "a", "a", "a"]
 
 
 # Challenge 9
-# This function should take a integer representing a battery level as a percentage
-# If the battery level is less than or equal to 5%, then you should return a string stating:
+# This function should take a integer representing a battery level
+#  as a percentage.
+# If the battery level is less than or equal to 5%, then you should return
+#  a string stating:
 #     "Warning - battery level low: <number-here>%, please charge your device"
-# If the battery level is between 5 and 99% then it should return a string stating:
+# If the battery level is between 5 and 99% then it should return a
+#  string stating:
 #     "Battery level: <number-here>%"
 # If the battery level is 100% then it should return a string stating:
 #     "Fully charged :)"
@@ -152,6 +169,7 @@ def check_battery_level():
     pass
 
 
+@pytest.mark.skip()
 def test_check_battery_level():
     assert check_battery_level(100) == "Fully charged :)"
 
@@ -188,6 +206,7 @@ def collect_strings():
     pass
 
 
+@pytest.mark.skip()
 def test_collect_strings():
     assert collect_strings(["a", "b", "c"]) == ["a", "b", "c"]
     assert collect_strings(["a", 10, "b", 1000, "c"]) == ["a", "b", "c"]
