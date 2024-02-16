@@ -198,7 +198,7 @@ def test_check_battery_level():
 
 
 # Challenge 10
-# This function should take a list as an argument and return an list containing
+# This function should take a list as an argument and return a list containing
 # all string elements from the input (retaining the order)
 
 

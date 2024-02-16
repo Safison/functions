@@ -165,8 +165,7 @@ def test_contains_no_repeats():
 
 # When users are signing up for our service we ask them pick a username.
 # Each person's username must be unique and we will write a function to check
-#  if their usernames have
-# already been taken or not
+#  if their usernames have already been taken or not
 
 # This function should take a list of existing usernames and any number of
 #  additional usernames to check
