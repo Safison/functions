@@ -2,7 +2,8 @@ import pytest
 
 
 # Exercise 0
-# This function should take a list as an argument and return True if the list is empty, False otherwise.
+# This function should take a list as an argument and return True if the list
+#  is empty, False otherwise.
 def is_empty_list():
     pass
 
@@ -14,7 +15,9 @@ def test_is_empty_list():
 
 
 # Exercise 1
-# This function should take an dictionary representing a person and information about whether they like to code
+# This function should take an dictionary representing a person and information
+#  about whether they like to code
+
 # A person will take this form:
 # {
 #   "name": "Mitch",
@@ -44,7 +47,9 @@ def test_create_profile_description():
 
 
 # Exercise 2
-# This function should take a string representing a traffic light colour as an argument
+# This function should take a string representing a traffic light colour as
+#  an argument
+
 # It will be one of "red", "green" or "amber" in either uppercase or lowercase
 # You should return a corresponding message
 
@@ -66,7 +71,8 @@ def test_read_traffic_light():
 
 
 # Exercise 3
-# This function should take any number of arguments and return the number of arguments passed into the function
+# This function should take any number of arguments and return the number of
+#  arguments passed into the function
 def how_many_arguments():
     pass
 
@@ -80,7 +86,9 @@ def test_how_many_arguments():
 
 
 # Exercise 4
-# This function should take a dictionary representing a coin machine and a string representing a coin as its arguments
+# This function should take a dictionary representing a coin machine and a
+#  string representing a coin as its arguments
+
 # A coin machine object will take this form:
 # {
 #   "1p": 0,
@@ -88,7 +96,9 @@ def test_how_many_arguments():
 #   "5p": 0,
 #   "10p": 0
 # }
-# You should 'add the provided coin to the machine by altering the associated key and returning the updated coin machine
+
+# You should 'add the provided coin to the machine by altering the associated
+#  key and returning the updated coin machine
 def update_coin_machine():
     pass
 
@@ -129,8 +139,10 @@ def test_update_coin_machine():
 
 # Exercise 5
 
-# This function should take a list representing coordinates - an x position and a y position - and a string representing a direction
-# It should return a new pair of coordinates, with the coords updated by moving either x or y 1 unit in a particular direction
+# This function should take a list representing coordinates - an x position and
+#  a y position - and a string representing a direction.
+# It should return a new pair of coordinates, with the coords updated by moving
+#  either x or y 1 unit in a particular direction.
 
 
 # If direction is "up" it should move 1 unit up (+ 1 in the y direction)
@@ -150,7 +162,8 @@ def test_update_position():
 
 
 # Exercise 6
-# This function should take any value as an argument, and return true if it is falsy, and false otherwise
+# This function should take any value as an argument, and return true if it is
+#  falsy, and false otherwise
 def is_falsy(value):
     pass
 
@@ -169,10 +182,12 @@ def test_is_falsy():
 
 
 # Exercise 7
-# This function should take a number representing a dice roll and a string representing a coin toss as its arguments
+# This function should take a number representing a dice roll and a string
+#  representing a coin toss as its arguments
 # A dice roll will be a number between 1 and 6
 # A coin toss will be "H" or "T" representing heads or tails
-# The game is considered to be won if the dice roll is 3 or higher AND the coin toss is "H"
+# The game is considered to be won if the dice roll is 3 or higher AND the
+#  coin toss is "H"
 # You should return True if the game has been won and False otherwise
 def check_game():
     pass
