@@ -80,7 +80,7 @@ def test_move_item_to_end():
 #       "personal_details": {
 #           "name": "Alex",
 #           "age": 39,
-#           "favFood": "gooseberry fool"
+#           "fav_food": "gooseberry fool"
 #       },
 # }
 # The user's age should be increased by 1 to reflect their recent birthday

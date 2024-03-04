@@ -21,14 +21,14 @@ def test_is_empty_list():
 # A person will take this form:
 # {
 #   "name": "Mitch",
-#   "likesToCode": True
+#   "likes_to_code": True
 # }
 
-# If the 'likesToCode' key is true, then you should return a string of the form
+# If the 'likes_to_code' key is true, then you should return a string of the form
 #   "My name is Mitch and I like to code."
 
 
-# If the 'likesToCode' key is false, the string should look like
+# If the 'likes_to_code' key is false, the string should look like
 #   "My name is Mitch and I don't like to code."
 def create_profile_description():
     pass
@@ -37,11 +37,11 @@ def create_profile_description():
 @pytest.mark.skip()
 def test_create_profile_description():
     assert (
-        create_profile_description({"name": "Mitch", "likesToCode": True})
+        create_profile_description({"name": "Mitch", "likes_to_code": True})
         == "My name is Mitch and I like to code."
     )
     assert (
-        create_profile_description({"name": "Lisa", "likesToCode": False})
+        create_profile_description({"name": "Lisa", "likes_to_code": False})
         == "My name is Lisa and I don't like to code."
     )
 
