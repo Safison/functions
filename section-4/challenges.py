@@ -117,7 +117,7 @@ def test_update_user_age():
             "fav_food": "caviar"
         },
     }
-    updateUserAge(user2)
+    update_user_age(user2)
     assert user2 == {
         "admin": True,
         "username": "brum4life",
