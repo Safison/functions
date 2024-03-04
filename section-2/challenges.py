@@ -79,7 +79,7 @@ def test_capitalise_first_letter():
 # and return true if that year is in the 20th century and false otherwise.
 
 
-def is_in_the_20th_century(year: int):
+def is_in_the_20th_century():
     pass
 
 
