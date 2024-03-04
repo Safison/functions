@@ -164,7 +164,7 @@ def test_update_position():
 # Exercise 6
 # This function should take any value as an argument, and return true if it is
 #  falsy, and false otherwise
-def is_falsy(value):
+def is_falsy():
     pass
 
 
