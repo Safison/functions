@@ -109,7 +109,8 @@ def test_is_absolute_path():
     assert is_absolute_path("/Users/mitch") == True
     assert (
         is_absolute_path(
-            "/Users/mitch/northcoders/remote_course/remote_precourse_1")
+            "/Users/mitch/northcoders/remote_course/remote_precourse_1"
+        )
         == True
     )
     assert is_absolute_path("../composers") == False

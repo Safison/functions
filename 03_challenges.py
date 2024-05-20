@@ -97,6 +97,7 @@ def test_how_many_arguments():
 #   "10p": 0
 # }
 
+
 # You should 'add the provided coin to the machine by altering the associated
 #  key and returning the updated coin machine
 def update_coin_machine():
@@ -105,31 +106,41 @@ def update_coin_machine():
 
 @pytest.mark.skip()
 def test_update_coin_machine():
-    assert update_coin_machine({"1p": 0, "2p": 0, "5p": 0, "10p": 0}, "1p") == {
+    assert update_coin_machine(
+        {"1p": 0, "2p": 0, "5p": 0, "10p": 0}, "1p"
+    ) == {
         "1p": 1,
         "2p": 0,
         "5p": 0,
         "10p": 0,
     }
-    assert update_coin_machine({"1p": 0, "2p": 0, "5p": 0, "10p": 0}, "2p") == {
+    assert update_coin_machine(
+        {"1p": 0, "2p": 0, "5p": 0, "10p": 0}, "2p"
+    ) == {
         "1p": 0,
         "2p": 1,
         "5p": 0,
         "10p": 0,
     }
-    assert update_coin_machine({"1p": 0, "2p": 3, "5p": 0, "10p": 0}, "2p") == {
+    assert update_coin_machine(
+        {"1p": 0, "2p": 3, "5p": 0, "10p": 0}, "2p"
+    ) == {
         "1p": 0,
         "2p": 4,
         "5p": 0,
         "10p": 0,
     }
-    assert update_coin_machine({"1p": 0, "2p": 3, "5p": 10, "10p": 0}, "5p") == {
+    assert update_coin_machine(
+        {"1p": 0, "2p": 3, "5p": 10, "10p": 0}, "5p"
+    ) == {
         "1p": 0,
         "2p": 3,
         "5p": 11,
         "10p": 0,
     }
-    assert update_coin_machine({"1p": 0, "2p": 3, "5p": 10, "10p": 0}, "10p") == {
+    assert update_coin_machine(
+        {"1p": 0, "2p": 3, "5p": 10, "10p": 0}, "10p"
+    ) == {
         "1p": 0,
         "2p": 3,
         "5p": 10,
