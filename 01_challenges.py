@@ -1,86 +1,98 @@
-import pytest
-
-
 # Exercise 0
-def test_multi_type_list():
+def create_multi_type_list():
     multi_type_list = ["I am a string", 42, True, [1, 2, 3]]
+    return multi_type_list
 
-    assert type(multi_type_list[0]) == FILL_ME_IN
-    assert type(multi_type_list[1]) == FILL_ME_IN
-    assert type(multi_type_list[2]) == FILL_ME_IN
-    assert type(multi_type_list[3]) == FILL_ME_IN
+
+multi_type_list = create_multi_type_list()
+
+assert type(multi_type_list[0]) is FILL_ME_IN
+assert type(multi_type_list[1]) is FILL_ME_IN
+assert type(multi_type_list[2]) is FILL_ME_IN
+assert type(multi_type_list[3]) is FILL_ME_IN
 
 
 # Exercise 1
-@pytest.mark.skip()
-def test_list_mutation():
+def list_mutation():
     letters = ["a", "b", "c"]
     letters.append("d")
     letters.append("g")
+    return letters
 
-    assert letters == FILL_ME_IN
 
-    last_letter = letters.pop()
+letters = list_mutation()
 
-    assert last_letter == FILL_ME_IN
-    assert letters == FILL_ME_IN
+assert letters == FILL_ME_IN
+
+last_letter = letters.pop()
+
+assert last_letter == FILL_ME_IN
+assert letters == FILL_ME_IN
 
 
 # Exercise 2
-@pytest.mark.skip()
-def test_nested_lists():
+def nested_lists():
     rows = [
         ["a", "b", "c"],
         ["d", "e", "f"],
         ["g", "h", "i"],
     ]
+    return rows
 
-    assert rows[0] == FILL_ME_IN
-    assert rows[1] == FILL_ME_IN
-    assert rows[2] == FILL_ME_IN
 
-    first_row = rows[0]
-    assert first_row[0] == "a"
-    assert first_row[FILL_ME_IN] == "b"
+rows = nested_lists()
 
-    assert rows[1][FILL_ME_IN] == "e"
-    assert rows[2][FILL_ME_IN] == "g"
-    assert rows[0][FILL_ME_IN] == "c"
+assert rows[0] == FILL_ME_IN
+assert rows[1] == FILL_ME_IN
+assert rows[2] == FILL_ME_IN
+
+first_row = rows[0]
+assert first_row[0] == "a"
+assert first_row[FILL_ME_IN] == "b"
+
+assert rows[1][FILL_ME_IN] == "e"
+assert rows[2][FILL_ME_IN] == "g"
+assert rows[0][FILL_ME_IN] == "c"
 
 
 # Exercise 3
-@pytest.mark.skip()
-def test_dictionary_keys():
+def dictionary_keys():
     father = {
         "first_name": "Michael",
         "last_name": "Bluth",
         "age": 33,
     }
+    return father
 
-    key = "first_name"
-    assert father["last_name"] == FILL_ME_IN
-    assert father["age"] == FILL_ME_IN
-    assert father[key] == FILL_ME_IN
+
+father = dictionary_keys()
+
+key = "first_name"
+assert father["last_name"] == FILL_ME_IN
+assert father["age"] == FILL_ME_IN
+assert father[key] == FILL_ME_IN
 
 
 # Exercise 4
-@pytest.mark.skip()
-def test_removing_dict_keys():
+def removing_dict_keys():
     brother_in_law = {
         "name": "Tobias",
         "lastname": "Funke",
         "job": "therapist",
     }
+    return brother_in_law
 
-    assert brother_in_law["job"] == FILL_ME_IN
 
-    del brother_in_law["job"]
-    assert brother_in_law == FILL_ME_IN
+brother_in_law = removing_dict_keys()
+
+assert brother_in_law["job"] == FILL_ME_IN
+
+del brother_in_law["job"]
+assert brother_in_law == FILL_ME_IN
 
 
 # Exercise 5
-@pytest.mark.skip()
-def test_nested_dictionaries():
+def nested_dictionaries():
     bluth_family = {
         "father": {
             "name": "George",
@@ -91,7 +103,11 @@ def test_nested_dictionaries():
         "sons": [{"name": "GOB"}, {"name": "Michael"}, {"name": "Buster"}],
         "daughters": [{"name": "Lindsay"}],
     }
+    return bluth_family
 
-    assert bluth_family["father"]["name"] == FILL_ME_IN
-    assert bluth_family["mother"]["name"] == FILL_ME_IN
-    assert bluth_family["daughters"][FILL_ME_IN][FILL_ME_IN] == "Lindsay"
+
+bluth_family = nested_dictionaries()
+
+assert bluth_family["father"]["name"] == FILL_ME_IN
+assert bluth_family["mother"]["name"] == FILL_ME_IN
+assert bluth_family["daughters"][FILL_ME_IN][FILL_ME_IN] == "Lindsay"
