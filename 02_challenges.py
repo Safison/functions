@@ -1,4 +1,4 @@
-import pytest
+from test_api.checks import Check, SkipCheck
 
 
 # Challenge 0
@@ -7,38 +7,51 @@ def multiply():
     pass
 
 
-def test_multiply():
-    assert multiply(3, 5) == 15
-    assert multiply(17, 19) == 323
-    assert multiply(-180, 2) == -360
+Check(multiply, "return the product of two passed numbers").when_called_with(
+    3, 5
+).returns(15)
+Check(multiply, "return the product of two passed numbers").when_called_with(
+    17, 19
+).returns(323)
+Check(multiply, "return the product of two passed numbers").when_called_with(
+    -180, 2
+).returns(-360)
 
 
 # Challenge 1
-# This function should take a single argument and return its value rounded
-# DOWN to the nearest integer.
+# This function should take a single argument and return its value
+# rounded DOWN to the nearest integer.
 def round_down():
     pass
 
 
-@pytest.mark.skip()
-def test_round_down():
-    assert round_down(100.1) == 100
-    assert round_down(25.5) == 25
-    assert round_down(121.999) == 121
+SkipCheck(
+    round_down, "return its value rounded DOWN to the nearest integer"
+).when_called_with(100.1).returns(100)
+SkipCheck(
+    round_down, "return its value rounded DOWN to the nearest integer"
+).when_called_with(25.5).returns(25)
+SkipCheck(
+    round_down, "return its value rounded DOWN to the nearest integer"
+).when_called_with(121.999).returns(121)
 
 
 # Challenge 2
-# This function should take two arguments, m and n, and return m raised to the
-# power of n.
+# This function should take two arguments, m and n, and return m
+# raised to the power of n.
 def raise_to_power():
     pass
 
 
-@pytest.mark.skip()
-def test_raise_to_power():
-    assert raise_to_power(10, 3) == 1000
-    assert raise_to_power(25, 2) == 625
-    assert raise_to_power(10, 0) == 1
+SkipCheck(
+    raise_to_power, "return m raised to the power of n"
+).when_called_with(10, 3).returns(1000)
+SkipCheck(
+    raise_to_power, "return m raised to the power of n"
+).when_called_with(25, 2).returns(625)
+SkipCheck(
+    raise_to_power, "return m raised to the power of n"
+).when_called_with(10, 0).returns(1)
 
 
 # Challenge 3
@@ -48,14 +61,24 @@ def is_multiple_of_6():
     pass
 
 
-@pytest.mark.skip()
-def test_is_multiple_of_6():
-    assert is_multiple_of_6(6) == True
-    assert is_multiple_of_6(10) == False
-    assert is_multiple_of_6(15) == False
-    assert is_multiple_of_6(36) == True
-    assert is_multiple_of_6(60) == True
-    assert is_multiple_of_6(61) == False
+SkipCheck(
+    is_multiple_of_6, "return True if it is a multiple of 6, False otherwise"
+).when_called_with(6).returns(True)
+SkipCheck(
+    is_multiple_of_6, "return True if it is a multiple of 6, False otherwise"
+).when_called_with(10).returns(False)
+SkipCheck(
+    is_multiple_of_6, "return True if it is a multiple of 6, False otherwise"
+).when_called_with(15).returns(False)
+SkipCheck(
+    is_multiple_of_6, "return True if it is a multiple of 6, False otherwise"
+).when_called_with(36).returns(True)
+SkipCheck(
+    is_multiple_of_6, "return True if it is a multiple of 6, False otherwise"
+).when_called_with(60).returns(True)
+SkipCheck(
+    is_multiple_of_6, "return True if it is a multiple of 6, False otherwise"
+).when_called_with(61).returns(False)
 
 
 # Challenge 4
@@ -67,11 +90,18 @@ def capitalise_first_letter():
     pass
 
 
-@pytest.mark.skip()
-def test_capitalise_first_letter():
-    assert capitalise_first_letter("bang") == "Bang"
-    assert capitalise_first_letter("apple") == "Apple"
-    assert capitalise_first_letter("coding") == "Coding"
+SkipCheck(
+    capitalise_first_letter,
+    "return the same string with the first letter capitalised",
+).when_called_with("bang").returns("Bang")
+SkipCheck(
+    capitalise_first_letter,
+    "return the same string with the first letter capitalised",
+).when_called_with("apple").returns("Apple")
+SkipCheck(
+    capitalise_first_letter,
+    "return the same string with the first letter capitalised",
+).when_called_with("coding").returns("Coding")
 
 
 # Challenge 5
@@ -83,15 +113,34 @@ def is_in_the_20th_century():
     pass
 
 
-@pytest.mark.skip()
-def test_is_in_the_20th_century():
-    assert is_in_the_20th_century(1962) == True
-    assert is_in_the_20th_century(1901) == True
-    assert is_in_the_20th_century(1900) == False
-    assert is_in_the_20th_century(1913) == True
-    assert is_in_the_20th_century(1876) == False
-    assert is_in_the_20th_century(2001) == False
-    assert is_in_the_20th_century(2000) == True
+SkipCheck(
+    is_in_the_20th_century,
+    "return true if that year is in the 20th century and false otherwise",
+).when_called_with(1962).returns(True)
+SkipCheck(
+    is_in_the_20th_century,
+    "return true if that year is in the 20th century and false otherwise",
+).when_called_with(1901).returns(True)
+SkipCheck(
+    is_in_the_20th_century,
+    "return true if that year is in the 20th century and false otherwise",
+).when_called_with(1900).returns(False)
+SkipCheck(
+    is_in_the_20th_century,
+    "return true if that year is in the 20th century and false otherwise",
+).when_called_with(1913).returns(True)
+SkipCheck(
+    is_in_the_20th_century,
+    "return true if that year is in the 20th century and false otherwise",
+).when_called_with(1876).returns(False)
+SkipCheck(
+    is_in_the_20th_century,
+    "return true if that year is in the 20th century and false otherwise",
+).when_called_with(2001).returns(False)
+SkipCheck(
+    is_in_the_20th_century,
+    "return true if that year is in the 20th century and false otherwise",
+).when_called_with(2000).returns(True)
 
 
 # Challenge 6
@@ -104,22 +153,31 @@ def is_absolute_path():
     pass
 
 
-@pytest.mark.skip()
-def test_is_absolute_path():
-    assert is_absolute_path("/Users/mitch") == True
-    assert (
-        is_absolute_path(
-            "/Users/mitch/northcoders/remote_course/remote_precourse_1"
-        )
-        == True
-    )
-    assert is_absolute_path("../composers") == False
-    assert is_absolute_path("./applications/my-awesome-app.js") == False
+SkipCheck(
+    is_absolute_path,
+    "return True if it is an absolute path, and False otherwise",
+).when_called_with("/Users/mitch").returns(True)
+SkipCheck(
+    is_absolute_path,
+    "return True if it is an absolute path, and False otherwise",
+).when_called_with(
+    "/Users/mitch/northcoders/remote_course/remote_precourse_1"
+).returns(
+    True
+)
+SkipCheck(
+    is_absolute_path,
+    "return True if it is an absolute path, and False otherwise",
+).when_called_with("../composers").returns(False)
+SkipCheck(
+    is_absolute_path,
+    "return True if it is an absolute path, and False otherwise",
+).when_called_with("./applications/my-awesome-app.js").returns(False)
 
 
 # Challenge 7
-# This function should take a string as an argument and return a string
-# which describes the ASCII code of that character
+# This function should take a string as an argument and
+# return a string which describes the ASCII code of that character
 # The returned string should be in the following format:
 # "The ASCII code for <character> is <character-code>"
 
@@ -128,14 +186,30 @@ def get_char_code():
     pass
 
 
-@pytest.mark.skip()
-def test_get_char_code():
-    assert get_char_code("A") == "The ASCII code for A is 65"
-    assert get_char_code("b") == "The ASCII code for b is 98"
-    assert get_char_code("z") == "The ASCII code for z is 122"
-    assert get_char_code("k") == "The ASCII code for k is 107"
-    assert get_char_code("!") == "The ASCII code for ! is 33"
-    assert get_char_code("M") == "The ASCII code for M is 77"
+SkipCheck(
+    get_char_code,
+    "return a string which describes the ASCII code of that character",
+).when_called_with("A").returns("The ASCII code for A is 65")
+SkipCheck(
+    get_char_code,
+    "return a string which describes the ASCII code of that character",
+).when_called_with("b").returns("The ASCII code for b is 98")
+SkipCheck(
+    get_char_code,
+    "return a string which describes the ASCII code of that character",
+).when_called_with("z").returns("The ASCII code for z is 122")
+SkipCheck(
+    get_char_code,
+    "return a string which describes the ASCII code of that character",
+).when_called_with("k").returns("The ASCII code for k is 107")
+SkipCheck(
+    get_char_code,
+    "return a string which describes the ASCII code of that character",
+).when_called_with("!").returns("The ASCII code for ! is 33")
+SkipCheck(
+    get_char_code,
+    "return a string which describes the ASCII code of that character",
+).when_called_with("M").returns("The ASCII code for M is 77")
 
 
 # Challenge 8
@@ -147,10 +221,14 @@ def create_list():
     pass
 
 
-@pytest.mark.skip()
-def test_create_list():
-    assert create_list(3, "!") == ["!", "!", "!"]
-    assert create_list(5, "a") == ["a", "a", "a", "a", "a"]
+SkipCheck(
+    create_list,
+    "return a list of the given length populated with the given character",
+).when_called_with(3, "!").returns(["!", "!", "!"])
+SkipCheck(
+    create_list,
+    "return a list of the given length populated with the given character",
+).when_called_with(5, "a").returns(["a", "a", "a", "a", "a"])
 
 
 # Challenge 9
@@ -170,44 +248,53 @@ def check_battery_level():
     pass
 
 
-@pytest.mark.skip()
-def test_check_battery_level():
-    assert check_battery_level(100) == "Fully charged :)"
-
-    assert check_battery_level(99) == "Battery level: 99%"
-    assert check_battery_level(80) == "Battery level: 80%"
-    assert check_battery_level(30) == "Battery level: 30%"
-    assert check_battery_level(10) == "Battery level: 10%"
-    assert check_battery_level(6) == "Battery level: 6%"
-
-    assert (
-        check_battery_level(5)
-        == "Warning - battery level low: 5%, please charge your device"
-    )
-    assert (
-        check_battery_level(4)
-        == "Warning - battery level low: 4%, please charge your device"
-    )
-    assert (
-        check_battery_level(3)
-        == "Warning - battery level low: 3%, please charge your device"
-    )
-    assert (
-        check_battery_level(1)
-        == "Warning - battery level low: 1%, please charge your device"
-    )
+SkipCheck(check_battery_level, "returns fully charged").when_called_with(
+    100
+).returns("Fully charged :)")
+SkipCheck(check_battery_level, "returns battery level").when_called_with(
+    99
+).returns("Battery level: 99%")
+SkipCheck(check_battery_level, "returns battery level").when_called_with(
+    80
+).returns("Battery level: 80%")
+SkipCheck(check_battery_level, "returns battery level").when_called_with(
+    30
+).returns("Battery level: 30%")
+SkipCheck(check_battery_level, "returns battery level").when_called_with(
+    10
+).returns("Battery level: 10%")
+SkipCheck(check_battery_level, "returns battery level").when_called_with(
+    6
+).returns("Battery level: 6%")
+SkipCheck(check_battery_level, "returns battery level").when_called_with(
+    5
+).returns("Warning - battery level low: 5%, please charge your device")
+SkipCheck(check_battery_level, "check_battery_level").when_called_with(
+    4
+).returns("Warning - battery level low: 4%, please charge your device")
+SkipCheck(check_battery_level, "check_battery_level").when_called_with(
+    3
+).returns("Warning - battery level low: 3%, please charge your device")
+SkipCheck(check_battery_level, "check_battery_level").when_called_with(
+    1
+).returns("Warning - battery level low: 1%, please charge your device")
 
 
 # Challenge 10
-# This function should take a list as an argument and return a list containing
-# all string elements from the input (retaining the order)
+# This function should take a list as an argument and return
+# a list containing all string elements from the input (retaining the order)
 
 
 def collect_strings():
     pass
 
 
-@pytest.mark.skip()
-def test_collect_strings():
-    assert collect_strings(["a", "b", "c"]) == ["a", "b", "c"]
-    assert collect_strings(["a", 10, "b", 1000, "c"]) == ["a", "b", "c"]
+SkipCheck(
+    collect_strings,
+    "return a list containing all string elements from the input",
+).when_called_with(["a", "b", "c"]).returns(["a", "b", "c"])
+
+SkipCheck(
+    collect_strings,
+    "return a list containing all string elements from the input",
+).when_called_with(["a", 10, "b", 1000, "c"]).returns(["a", "b", "c"])
