@@ -1,5 +1,4 @@
-import pytest
-
+from test_api.checks import Check, SkipCheck
 
 # If we list all the whole numbers below 10 that are multiples of 3 or 5, we
 #  get 3, 5, 6 and 9.
@@ -16,17 +15,20 @@ def find_total_of_multiples(limit):
     pass
 
 
-def test_find_total_of_multiples():
-    # find_total_of_multiples() return zero for negative numbers
-    assert find_total_of_multiples(-1) == 0
+Check(
+    find_total_of_multiples, "return zero for negative numbers"
+).when_called_with(-1).returns(0)
 
-    # find_total_of_multiples() returns first multiple of 3
-    assert find_total_of_multiples(4) == 3
+Check(find_total_of_multiples, "returns first multiple of 3").when_called_with(
+    4
+).returns(3)
 
-    # find_total_of_multiples() returns sum of multiples of 3 or 5  below limit
-
-    assert find_total_of_multiples(6) == 8
-    assert find_total_of_multiples(10) == 23
+Check(
+    find_total_of_multiples, "returns sum of multiples of 3 or 5  below limit"
+).when_called_with(6).returns(8)
+Check(
+    find_total_of_multiples, "returns sum of multiples of 3 or 5  below limit"
+).when_called_with(10).returns(23)
 
 
 # ---------------------------------------------------------------------------
@@ -62,17 +64,21 @@ def count_printer_errors():
     pass
 
 
-@pytest.mark.skip()
-def test_count_printer_errors():
-    # countPrinterErrors() should return zero for an empty control string
-    assert count_printer_errors("") == "0/0"
+SkipCheck(
+    count_printer_errors, "return zero for an empty control string"
+).when_called_with("").returns("0/0")
 
-    # count_printer_errors() should return correct control string length
-    assert count_printer_errors("aaa") == "0/3"
+SkipCheck(
+    count_printer_errors, "return correct control string length"
+).when_called_with("aaa").returns("0/3")
 
-    # count_printer_errors() should correctly count errors in control string
-    assert count_printer_errors("aaz") == "1/3"
-    assert count_printer_errors("aaaxbbbbyyhwawiwjjjwwm") == "8/22"
+SkipCheck(
+    count_printer_errors, "correctly count errors in control string"
+).when_called_with("aaz").returns("1/3")
+
+SkipCheck(
+    count_printer_errors, "correctly count errors in control string"
+).when_called_with("aaaxbbbbyyhwawiwjjjwwm").returns("8/22")
 
 
 # ---------------------------------------------------------------------------
@@ -91,44 +97,86 @@ def get_ordinal_suffix(num):
     pass
 
 
-@pytest.mark.skip()
-def test_get_ordinal_suffix():
-    # get_ordinal_suffix() returns 'st' when given 1
-    assert get_ordinal_suffix(1) == "st"
+SkipCheck(get_ordinal_suffix, "return 'st' when given 1").when_called_with(
+    1
+).returns("st")
 
-    # get_ordinal_suffix() returns 'nd' when given 2
-    assert get_ordinal_suffix(2) == "nd"
+SkipCheck(get_ordinal_suffix, "return 'nd' when given 2").when_called_with(
+    2
+).returns("nd")
 
-    # get_ordinal_suffix() returns 'rd' when given 3
-    assert get_ordinal_suffix(3) == "rd"
+SkipCheck(get_ordinal_suffix, "return 'rd' when given 3").when_called_with(
+    3
+).returns("rd")
 
-    # get_ordinal_suffix() returns 'th' given any single digit number above 3
-    assert get_ordinal_suffix(4) == "th"
-    assert get_ordinal_suffix(7) == "th"
-    assert get_ordinal_suffix(9) == "th"
+SkipCheck(
+    get_ordinal_suffix, "return 'th' given any single digit number above 3"
+).when_called_with(4).returns("th")
 
-    # get_ordinal_suffix() returns 'th' given any value between 10 and 20 inclusive
-    assert get_ordinal_suffix(10) == "th"
-    assert get_ordinal_suffix(11) == "th"
-    assert get_ordinal_suffix(15) == "th"
-    assert get_ordinal_suffix(19) == "th"
-    assert get_ordinal_suffix(20) == "th"
+SkipCheck(
+    get_ordinal_suffix, "return 'th' given any single digit number above 3"
+).when_called_with(7).returns("th")
 
-    # get_ordinal_suffix() returns 'st' for numbers above 20 ending in 1
-    assert get_ordinal_suffix(21) == "st"
-    assert get_ordinal_suffix(41) == "st"
+SkipCheck(
+    get_ordinal_suffix, "return 'th' given any single digit number above 3"
+).when_called_with(9).returns("th")
 
-    # get_ordinal_suffix() returns 'nd' for numbers above 20 ending in 2
-    assert get_ordinal_suffix(22) == "nd"
-    assert get_ordinal_suffix(32) == "nd"
+SkipCheck(
+    get_ordinal_suffix,
+    "return 'th' given any value between 10 and 20 inclusive",
+).when_called_with(10).returns("th")
 
-    # get_ordinal_suffix() returns 'rd' for numbers above 20 ending in 3
-    assert get_ordinal_suffix(23) == "rd"
-    assert get_ordinal_suffix(63) == "rd"
+SkipCheck(
+    get_ordinal_suffix,
+    "return 'th' given any value between 10 and 20 inclusive",
+).when_called_with(11).returns("th")
 
-    # get_ordinal_suffix() returns 'th' for any other numbers
-    assert get_ordinal_suffix(27) == "th"
-    assert get_ordinal_suffix(98) == "th"
+SkipCheck(
+    get_ordinal_suffix,
+    "return 'th' given any value between 10 and 20 inclusive",
+).when_called_with(15).returns("th")
+
+SkipCheck(
+    get_ordinal_suffix,
+    "return 'th' given any value between 10 and 20 inclusive",
+).when_called_with(19).returns("th")
+
+SkipCheck(
+    get_ordinal_suffix,
+    "return 'th' given any value between 10 and 20 inclusive",
+).when_called_with(20).returns("th")
+
+SkipCheck(
+    get_ordinal_suffix, "return 'st' given any value above 20 ending in 1"
+).when_called_with(21).returns("st")
+
+SkipCheck(
+    get_ordinal_suffix, "return 'st' given any value above 20 ending in 1"
+).when_called_with(41).returns("st")
+
+SkipCheck(
+    get_ordinal_suffix, "return 'nd' given any value above 20 ending in 2"
+).when_called_with(22).returns("nd")
+
+SkipCheck(
+    get_ordinal_suffix, "return 'nd' given any value above 20 ending in 2"
+).when_called_with(32).returns("nd")
+
+SkipCheck(
+    get_ordinal_suffix, "return 'rd' given any value above 20 ending in 3"
+).when_called_with(23).returns("rd")
+
+SkipCheck(
+    get_ordinal_suffix, "return 'rd' given any value above 20 ending in 3"
+).when_called_with(63).returns("rd")
+
+SkipCheck(
+    get_ordinal_suffix, "return 'th' given any other numbers"
+).when_called_with(27).returns("th")
+
+SkipCheck(
+    get_ordinal_suffix, "return 'th' given any other numbers"
+).when_called_with(98).returns("th")
 
 
 # ---------------------------------------------------------------------------
@@ -140,25 +188,46 @@ def contains_no_repeats(str):
     pass
 
 
-@pytest.mark.skip()
-def test_contains_no_repeats():
-    # contains_no_repeats() returns True for an empty string
-    assert contains_no_repeats("") == True
+SkipCheck(
+    contains_no_repeats, "return True for an empty string"
+).when_called_with("").returns(True)
 
-    # contains_no_repeats() returns False for a single repeated character
-    assert contains_no_repeats("oo") == False
-    assert contains_no_repeats("zzz") == False
+SkipCheck(
+    contains_no_repeats, "return False for a single repeated character"
+).when_called_with("oo").returns(False)
 
-    # contains_no_repeats() returns True when each character appears only once
-    assert contains_no_repeats("dog") == True
-    assert contains_no_repeats("cat") == True
-    assert contains_no_repeats("abcde") == True
+SkipCheck(
+    contains_no_repeats, "return False for a single repeated character"
+).when_called_with("zzz").returns(False)
 
-    # contains_no_repeats() returns False if any characters are repeated
-    assert contains_no_repeats("dooog") == False
-    assert contains_no_repeats("iHaveRepeats") == False
-    assert contains_no_repeats("anat") == False
-    assert contains_no_repeats("abcdea") == False
+
+SkipCheck(
+    contains_no_repeats, "return True when each character appears only once"
+).when_called_with("dog").returns(True)
+
+SkipCheck(
+    contains_no_repeats, "return True when each character appears only once"
+).when_called_with("cat").returns(True)
+
+SkipCheck(
+    contains_no_repeats, "return True when each character appears only once"
+).when_called_with("abcde").returns(True)
+
+SkipCheck(
+    contains_no_repeats, "return False if any characters are repeated"
+).when_called_with("dooog").returns(False)
+
+SkipCheck(
+    contains_no_repeats, "return False if any characters are repeated"
+).when_called_with("iHaveRepeats").returns(False)
+
+SkipCheck(
+    contains_no_repeats, "return False if any characters are repeated"
+).when_called_with("anat").returns(False)
+
+SkipCheck(
+    contains_no_repeats, "return False if any characters are repeated"
+).when_called_with("abcdea").returns(False)
 
 
 # ---------------------------------------------------------------------------
@@ -177,26 +246,30 @@ def check_usernames_available(usernames, *names):
     pass
 
 
-@pytest.mark.skip()
-def test_check_usernames_available():
-    # check_usernames_available returns True for a single available username
-    assert check_usernames_available(["Roy", "Moss"], "Jen") == True
+SkipCheck(
+    check_usernames_available, "return True for a single available username"
+).when_called_with(["Roy", "Moss"], "Jen").returns(True)
 
-    # check_usernames_available returns False for a single username that
-    #  is taken
-    assert check_usernames_available(["Roy", "Moss"], "Moss") == False
+SkipCheck(
+    check_usernames_available,
+    "return False for a single username that is taken",
+).when_called_with(["Roy", "Moss"], "Moss").returns(False)
 
-    # check_usernames_available returns True for multiple usernames that
-    #  are available
-    assert check_usernames_available(["Roy", "Moss"], "Jen", "Douglas") == True
+SkipCheck(
+    check_usernames_available,
+    "return True for multiple usernames that are available",
+).when_called_with(["Roy", "Moss"], "Jen", "Douglas").returns(True)
 
-    # check_usernames_available returns False for multiple usernames that
-    #  are available
-    assert check_usernames_available(["Roy", "Moss"], "Roy", "Moss") == False
+SkipCheck(
+    check_usernames_available,
+    "return False for multiple usernames that are available",
+).when_called_with(["Roy", "Moss"], "Roy", "Moss").returns(False)
 
-    # check_usernames_available returns False if a single username is
-    #  not available
-    assert check_usernames_available(["Roy", "Moss"], "Jen", "Moss") == False
+SkipCheck(
+    check_usernames_available,
+    "return False if a single username is not available",
+).when_called_with(["Roy", "Moss"], "Jen", "Moss").returns(False)
 
-    # check_usernames_available returns True if no new usernames are passed
-    assert check_usernames_available(["Roy", "Moss"]) == True
+SkipCheck(
+    check_usernames_available, "return True if no new usernames are passed"
+).when_called_with(["Roy", "Moss"]).returns(True)

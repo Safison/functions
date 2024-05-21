@@ -1,4 +1,4 @@
-import pytest
+from test_api.checks import Check, SkipCheck
 
 
 # Exercise 0
@@ -8,10 +8,17 @@ def is_empty_list():
     pass
 
 
-def test_is_empty_list():
-    assert is_empty_list([]) == True
-    assert is_empty_list(["a", "b", "c", "d"]) == False
-    assert is_empty_list(["a"]) == False
+Check(
+    is_empty_list, "return True if the list is empty, False otherwise"
+).when_called_with([]).returns(True)
+
+Check(
+    is_empty_list, "return True if the list is empty, False otherwise"
+).when_called_with(["a", "b", "c", "d"]).returns(False)
+
+Check(
+    is_empty_list, "return True if the list is empty, False otherwise"
+).when_called_with(["a"]).returns(False)
 
 
 # Exercise 1
@@ -20,30 +27,35 @@ def test_is_empty_list():
 
 # A person will take this form:
 # {
-#   "name": "Mitch",
+#   "name": "Danika",
 #   "likes_to_code": True
 # }
 
-# If the 'likes_to_code' key is true, then you should return a string of the form
-#   "My name is Mitch and I like to code."
+# If the 'likes_to_code' key is true, then return a string of the form
+#   "My name is Danika and I like to code."
 
 
 # If the 'likes_to_code' key is false, the string should look like
-#   "My name is Mitch and I don't like to code."
+#   "My name is Danika and I don't like to code."
+
+
 def create_profile_description():
     pass
 
 
-@pytest.mark.skip()
-def test_create_profile_description():
-    assert (
-        create_profile_description({"name": "Mitch", "likes_to_code": True})
-        == "My name is Mitch and I like to code."
-    )
-    assert (
-        create_profile_description({"name": "Lisa", "likes_to_code": False})
-        == "My name is Lisa and I don't like to code."
-    )
+SkipCheck(
+    create_profile_description,
+    "return a string describing a person and their coding preferences",
+).when_called_with({"name": "Danika", "likes_to_code": True}).returns(
+    "My name is Danika and I like to code."
+)
+
+SkipCheck(
+    create_profile_description,
+    "return a string describing a person and their coding preferences",
+).when_called_with({"name": "Alex", "likes_to_code": False}).returns(
+    "My name is Alex and I don't like to code."
+)
 
 
 # Exercise 2
@@ -58,16 +70,35 @@ def read_traffic_light():
     pass
 
 
-@pytest.mark.skip()
-def test_read_traffic_light():
-    assert read_traffic_light("green") == "GO!"
-    assert read_traffic_light("GREEN") == "GO!"
+SkipCheck(
+    read_traffic_light,
+    "return a message based on the traffic light colour",
+).when_called_with("green").returns("GO!")
 
-    assert read_traffic_light("amber") == "GET READY..."
-    assert read_traffic_light("AMBER") == "GET READY..."
+SkipCheck(
+    read_traffic_light,
+    "return a message based on the traffic light colour",
+).when_called_with("GREEN").returns("GO!")
 
-    assert read_traffic_light("red") == "STOP!"
-    assert read_traffic_light("RED") == "STOP!"
+SkipCheck(
+    read_traffic_light,
+    "return a message based on the traffic light colour",
+).when_called_with("amber").returns("GET READY...")
+
+SkipCheck(
+    read_traffic_light,
+    "return a message based on the traffic light colour",
+).when_called_with("AMBER").returns("GET READY...")
+
+SkipCheck(
+    read_traffic_light,
+    "return a message based on the traffic light colour",
+).when_called_with("red").returns("STOP!")
+
+SkipCheck(
+    read_traffic_light,
+    "return a message based on the traffic light colour",
+).when_called_with("RED").returns("STOP!")
 
 
 # Exercise 3
@@ -77,12 +108,25 @@ def how_many_arguments():
     pass
 
 
-@pytest.mark.skip()
-def test_how_many_arguments():
-    assert how_many_arguments("a", "b", "c") == 3
-    assert how_many_arguments() == 0
-    assert how_many_arguments(1, 2, 3, 4, 5) == 5
-    assert how_many_arguments("the", "meaning", "of", "life", "is", 42) == 6
+SkipCheck(
+    how_many_arguments,
+    "return the number of arguments passed into the function",
+).when_called_with("a", "b", "c").returns(3)
+
+SkipCheck(
+    how_many_arguments,
+    "return the number of arguments passed into the function",
+).when_called_with().returns(0)
+
+SkipCheck(
+    how_many_arguments,
+    "return the number of arguments passed into the function",
+).when_called_with(1, 2, 3, 4, 5).returns(5)
+
+SkipCheck(
+    how_many_arguments,
+    "return the number of arguments passed into the function",
+).when_called_with("the", "meaning", "of", "life", "is", 42).returns(6)
 
 
 # Exercise 4
@@ -104,48 +148,51 @@ def update_coin_machine():
     pass
 
 
-@pytest.mark.skip()
-def test_update_coin_machine():
-    assert update_coin_machine(
-        {"1p": 0, "2p": 0, "5p": 0, "10p": 0}, "1p"
-    ) == {
-        "1p": 1,
-        "2p": 0,
-        "5p": 0,
-        "10p": 0,
-    }
-    assert update_coin_machine(
-        {"1p": 0, "2p": 0, "5p": 0, "10p": 0}, "2p"
-    ) == {
-        "1p": 0,
-        "2p": 1,
-        "5p": 0,
-        "10p": 0,
-    }
-    assert update_coin_machine(
-        {"1p": 0, "2p": 3, "5p": 0, "10p": 0}, "2p"
-    ) == {
+SkipCheck(
+    update_coin_machine,
+    "return the updated coin machine",
+).when_called_with({"1p": 0, "2p": 0, "5p": 0, "10p": 0}, "1p").returns(
+    {"1p": 1, "2p": 0, "5p": 0, "10p": 0}
+)
+
+SkipCheck(
+    update_coin_machine, "return the updated coin machine"
+).when_called_with({"1p": 0, "2p": 0, "5p": 0, "10p": 0}, "2p").returns(
+    {"1p": 0, "2p": 1, "5p": 0, "10p": 0}
+)
+
+SkipCheck(
+    update_coin_machine, "return the updated coin machine"
+).when_called_with({"1p": 0, "2p": 3, "5p": 0, "10p": 0}, "2p").returns(
+    {
         "1p": 0,
         "2p": 4,
         "5p": 0,
         "10p": 0,
     }
-    assert update_coin_machine(
-        {"1p": 0, "2p": 3, "5p": 10, "10p": 0}, "5p"
-    ) == {
+)
+
+SkipCheck(
+    update_coin_machine, "return the updated coin machine"
+).when_called_with({"1p": 0, "2p": 3, "5p": 10, "10p": 0}, "5p").returns(
+    {
         "1p": 0,
         "2p": 3,
         "5p": 11,
         "10p": 0,
     }
-    assert update_coin_machine(
-        {"1p": 0, "2p": 3, "5p": 10, "10p": 0}, "10p"
-    ) == {
+)
+
+SkipCheck(
+    update_coin_machine, "return the updated coin machine"
+).when_called_with({"1p": 0, "2p": 3, "5p": 10, "10p": 0}, "10p").returns(
+    {
         "1p": 0,
         "2p": 3,
         "5p": 10,
         "10p": 1,
     }
+)
 
 
 # Exercise 5
@@ -157,19 +204,40 @@ def test_update_coin_machine():
 
 
 # If direction is "up" it should move 1 unit up (+ 1 in the y direction)
-# If the direction is "down" it should move 1 unit down (- 1 in the y direction)
-# If the direction is "right" it should move 1 unit right (+ 1 in the x direction)
-# If the direction is "left" it should move 1 unit left (- 1 in the x direction)
+# If the direction is "down" it should move 1 unit down(- 1 in the y direction)
+# If direction is "right" it should move 1 unit right (+1 in the x direction)
+# If the direction is "left" it should move 1 unit left(- 1 in the x direction)
 def update_position():
     pass
 
 
-@pytest.mark.skip()
-def test_update_position():
-    assert update_position([10, 10], "up") == [10, 11]
-    assert update_position([0, 0], "down") == [0, -1]
-    assert update_position([3, 3], "left") == [2, 3]
-    assert update_position([7, 50], "right") == [8, 50]
+SkipCheck(
+    update_position,
+    "return the updated position",
+).when_called_with(
+    [10, 10], "up"
+).returns([10, 11])
+
+SkipCheck(
+    update_position,
+    "return the updated position",
+).when_called_with(
+    [0, 0], "down"
+).returns([0, -1])
+
+SkipCheck(
+    update_position,
+    "return the updated position",
+).when_called_with(
+    [3, 3], "left"
+).returns([2, 3])
+
+SkipCheck(
+    update_position,
+    "return the updated position",
+).when_called_with(
+    [7, 50], "right"
+).returns([8, 50])
 
 
 # Exercise 6
@@ -179,17 +247,33 @@ def is_falsy():
     pass
 
 
-@pytest.mark.skip()
-def test_is_falsy():
-    assert is_falsy(False) == True
-    assert is_falsy(True) == False
-    assert is_falsy("") == True
-    assert is_falsy(0) == True
-    assert is_falsy({}) == True
-    assert is_falsy({"a": 1}) == False
-    assert is_falsy([]) == True
-    assert is_falsy([1, 2, 3]) == False
-    assert is_falsy(None) == True
+SkipCheck(
+    is_falsy, "return true if the argument is falsy, false otherwise"
+).when_called_with(False).returns(True)
+SkipCheck(
+    is_falsy, "return true if the argument is falsy, false otherwise"
+).when_called_with(True).returns(False)
+SkipCheck(
+    is_falsy, "return true if the argument is falsy, false otherwise"
+).when_called_with("").returns(True)
+SkipCheck(
+    is_falsy, "return true if the argument is falsy, false otherwise"
+).when_called_with(0).returns(True)
+SkipCheck(
+    is_falsy, "return true if the argument is falsy, false otherwise"
+).when_called_with({}).returns(True)
+SkipCheck(
+    is_falsy, "return true if the argument is falsy, false otherwise"
+).when_called_with({"a": 1}).returns(False)
+SkipCheck(
+    is_falsy, "return true if the argument is falsy, false otherwise"
+).when_called_with([]).returns(True)
+SkipCheck(
+    is_falsy, "return true if the argument is falsy, false otherwise"
+).when_called_with([1, 2, 3]).returns(False)
+SkipCheck(
+    is_falsy, "return true if the argument is falsy, false otherwise"
+).when_called_with(None).returns(True)
 
 
 # Exercise 7
@@ -204,13 +288,25 @@ def check_game():
     pass
 
 
-@pytest.mark.skip()
-def test_check_game():
-    assert check_game(3, "H") == True
-    assert check_game(4, "H") == True
-    assert check_game(5, "H") == True
-    assert check_game(6, "H") == True
-    assert check_game(6, "T") == False
+SkipCheck(
+    check_game, "return True if the game has been won, False otherwise"
+).when_called_with(3, "H").returns(True)
+
+SkipCheck(
+    check_game, "return True if the game has been won, False otherwise"
+).when_called_with(4, "H").returns(True)
+
+SkipCheck(
+    check_game, "return True if the game has been won, False otherwise"
+).when_called_with(5, "H").returns(True)
+
+SkipCheck(
+    check_game, "return True if the game has been won, False otherwise"
+).when_called_with(6, "H").returns(True)
+
+SkipCheck(
+    check_game, "return True if the game has been won, False otherwise"
+).when_called_with(6, "T").returns(False)
 
 
 # Exercise 8
@@ -226,24 +322,30 @@ def add_coins():
     pass
 
 
-@pytest.mark.skip()
-def test_add_coins():
-    assert add_coins([[], [], [], []], "1p") == [["1p"], [], [], []]
-    assert add_coins([[], [], [], []], "2p") == [[], ["2p"], [], []]
-    assert add_coins([[], ["2p"], [], []], "2p") == [[], ["2p", "2p"], [], []]
-    assert add_coins([[], [], [], []], "5p") == [[], [], ["5p"], []]
-    assert add_coins([["1p"], [], [], ["10p", "10p"]], "2p") == [
-        ["1p"],
-        ["2p"],
-        [],
-        ["10p", "10p"],
-    ]
-    assert add_coins([[], [], ["5p", "5p"], []], "5p") == [
-        [],
-        [],
-        ["5p", "5p", "5p"],
-        [],
-    ]
+SkipCheck(
+    add_coins, "return an updated version of the given list with the coin"
+).when_called_with([[], [], [], []], "1p").returns([["1p"], [], [], []])
+SkipCheck(
+    add_coins, "return an updated version of the given list with the coin"
+).when_called_with([[], [], [], []], "2p").returns([[], ["2p"], [], []])
+SkipCheck(
+    add_coins, "return an updated version of the given list with the coin"
+).when_called_with([[], ["2p"], [], []], "2p").returns(
+    [[], ["2p", "2p"], [], []]
+)
+SkipCheck(
+    add_coins, "return an updated version of the given list with the coin"
+).when_called_with([[], [], [], []], "5p").returns([[], [], ["5p"], []])
+SkipCheck(
+    add_coins, "return an updated version of the given list with the coin"
+).when_called_with([["1p"], [], [], ["10p", "10p"]], "2p").returns(
+    [["1p"], ["2p"], [], ["10p", "10p"]]
+)
+SkipCheck(
+    add_coins, "return an updated version of the given list with the coin"
+).when_called_with([[], [], ["5p", "5p"], []], "5p").returns(
+    [[], [], ["5p", "5p", "5p"], []]
+)
 
 
 # Mark your progress on the Learn 2 Code platform before moving on to the

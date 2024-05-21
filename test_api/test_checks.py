@@ -242,7 +242,7 @@ class TestCheck:
         check.when_called_with(4, 4).returns(8)
 
         captured = capsys.readouterr()
-        log_message = f"Test {test_title}: expected 8, but received 9"
+        log_message = f"Test {test_title}: expected '8', but received '9'"
 
         assert f"{add.__name__}()" in captured.out
         assert log_message in captured.out

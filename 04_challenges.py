@@ -1,5 +1,4 @@
-import pytest
-
+from test_api.checks import Check, SkipCheck
 
 # Exercise 0
 # Write a function, check_if_key_exists, that takes a dictionary and a key as
@@ -8,11 +7,17 @@ import pytest
 #  False otherwise
 
 
-def test_check_if_key_exists():
-    assert check_if_key_exists({"name": "jonny", "age": 32}, "name") == True
-    assert check_if_key_exists({"name": "jonny", "age": 32}, "age") == True
-    assert check_if_key_exists({"name": "jonny", "age": 32}, "pets") == False
+Check(check_if_key_exists, "Test if key exists").when_called_with(
+    {"name": "jonny", "age": 32}, "name"
+).returns(True)
 
+Check(check_if_key_exists, "Test if key exists").when_called_with(
+    {"name": "jonny", "age": 32}, "age"
+).returns(True)
+
+Check(check_if_key_exists, "Test if key exists").when_called_with(
+    {"name": "jonny", "age": 32}, "pets"
+).returns(False)
 
 # Exercise 1
 # Write a function, create_dict, that takes a list consisting of two elements
@@ -20,11 +25,17 @@ def test_check_if_key_exists():
 # It should return a dictionary with a single key based on the input
 
 
-@pytest.mark.skip()
-def test_create_dict():
-    assert create_dict(["name", "shaq"]) == {"name": "shaq"}
-    assert create_dict(["fruit", "apple"]) == {"fruit": "apple"}
-    assert create_dict(["language", "haskell"]) == {"language": "haskell"}
+SkipCheck(create_dict, "Create dictionary").when_called_with(
+    ["name", "shaq"]
+).returns({"name": "shaq"})
+
+SkipCheck(create_dict, "Create dictionary").when_called_with(
+    ["fruit", "apple"]
+).returns({"fruit": "apple"})
+
+SkipCheck(create_dict, "Create dictionary").when_called_with(
+    ["language", "haskell"]
+).returns({"language": "haskell"})
 
 
 # Exercise 2
@@ -33,15 +44,17 @@ def test_create_dict():
 # It should return a new list containing the first 'n' items of the given list
 
 
-@pytest.mark.skip()
-def test_get_first_n_items():
-    assert get_first_n_items(["a", "b", "c", "d"], 2) == ["a", "b"]
-    assert get_first_n_items(["apple", "banana", "pear", "kiwi"], 0) == []
-    assert get_first_n_items(["apple", "banana", "pear", "kiwi"], 3) == [
-        "apple",
-        "banana",
-        "pear",
-    ]
+SkipCheck(get_first_n_items, "Get first n items").when_called_with(
+    ["a", "b", "c", "d"], 2
+).returns(["a", "b"])
+
+SkipCheck(get_first_n_items, "Get first n items").when_called_with(
+    ["apple", "banana", "pear", "kiwi"], 0
+).returns([])
+
+SkipCheck(get_first_n_items, "Get first n items").when_called_with(
+    ["apple", "banana", "pear", "kiwi"], 3
+).returns(["apple", "banana", "pear"])
 
 
 # Exercise 3
@@ -52,12 +65,13 @@ def test_get_first_n_items():
 #  could do so
 
 
-@pytest.mark.skip()
-def test_create_arrow():
-    assert create_arrow("left") == "←"
-    assert create_arrow("right") == "→"
-    assert create_arrow("up") == "↑"
-    assert create_arrow("down") == "↓"
+SkipCheck(create_arrow, "Create arrow").when_called_with("left").returns("←")
+
+SkipCheck(create_arrow, "Create arrow").when_called_with("right").returns("→")
+
+SkipCheck(create_arrow, "Create arrow").when_called_with("up").returns("↑")
+
+SkipCheck(create_arrow, "Create arrow").when_called_with("down").returns("↓")
 
 
 # Exercise 4
@@ -67,11 +81,17 @@ def test_create_arrow():
 #  given index is now at the end of the list
 
 
-@pytest.mark.skip()
-def test_move_item_to_end():
-    assert move_item_to_end(["a", "b", "c"], 0) == ["b", "c", "a"]
-    assert move_item_to_end(["a", "b", "c", "d"], 2) == ["a", "b", "d", "c"]
-    assert move_item_to_end(["a", "b", "c", "d"], 1) == ["a", "c", "d", "b"]
+SkipCheck(move_item_to_end, "Move item to end").when_called_with(
+    ["a", "b", "c"], 0
+).returns(["b", "c", "a"])
+
+SkipCheck(move_item_to_end, "Move item to end").when_called_with(
+    ["a", "b", "c", "d"], 2
+).returns(["a", "b", "d", "c"])
+
+SkipCheck(move_item_to_end, "Move item to end").when_called_with(
+    ["a", "b", "c", "d"], 1
+).returns(["a", "c", "d", "b"])
 
 
 # Exercise 5
@@ -91,9 +111,8 @@ def test_move_item_to_end():
 # NOTE: This function does NOT need to return anything!
 
 
-@pytest.mark.skip()
-def test_update_user_age():
-    user1 = {
+SkipCheck(update_user_age, "Update user age").when_called_with(
+    {
         "admin": False,
         "username": "xoxoAlexoxo",
         "personal_details": {
@@ -102,8 +121,8 @@ def test_update_user_age():
             "fav_food": "gooseberry fool",
         },
     }
-    update_user_age(user1)
-    assert user1 == {
+).mutates_input(
+    {
         "admin": False,
         "username": "xoxoAlexoxo",
         "personal_details": {
@@ -112,8 +131,10 @@ def test_update_user_age():
             "fav_food": "gooseberry fool",
         },
     }
+)
 
-    user2 = {
+SkipCheck(update_user_age, "Update user age").when_called_with(
+    {
         "admin": True,
         "username": "brum4life",
         "personal_details": {
@@ -122,8 +143,8 @@ def test_update_user_age():
             "fav_food": "caviar",
         },
     }
-    update_user_age(user2)
-    assert user2 == {
+).mutates_input(
+    {
         "admin": True,
         "username": "brum4life",
         "personal_details": {
@@ -132,6 +153,7 @@ def test_update_user_age():
             "fav_food": "caviar",
         },
     }
+)
 
 
 # Exercise 6
@@ -141,20 +163,49 @@ def test_update_user_age():
 # A French infinitive verb is a word that ends with either "re", "ir" or "er"
 
 
-@pytest.mark.skip()
-def test_check_infinitive():
-    assert check_infinitive("manger") == True
-    assert check_infinitive("faire") == True
-    assert check_infinitive("aller") == True
-    assert check_infinitive("finir") == True
-    assert check_infinitive("rendre") == True
-    assert check_infinitive("savoir") == True
+SkipCheck(check_infinitive, "Check infinitive").when_called_with(
+    "manger"
+).returns(True)
 
-    assert check_infinitive("suis") == False
-    assert check_infinitive("ai") == False
-    assert check_infinitive("ete") == False
-    assert check_infinitive("sais") == False
-    assert check_infinitive("allons") == False
+SkipCheck(check_infinitive, "Check infinitive").when_called_with(
+    "faire"
+).returns(True)
+
+SkipCheck(check_infinitive, "Check infinitive").when_called_with(
+    "aller"
+).returns(True)
+
+SkipCheck(check_infinitive, "Check infinitive").when_called_with(
+    "finir"
+).returns(True)
+
+SkipCheck(check_infinitive, "Check infinitive").when_called_with(
+    "rendre"
+).returns(True)
+
+SkipCheck(check_infinitive, "Check infinitive").when_called_with(
+    "savoir"
+).returns(True)
+
+SkipCheck(check_infinitive, "Check infinitive").when_called_with(
+    "suis"
+).returns(False)
+
+SkipCheck(check_infinitive, "Check infinitive").when_called_with("ai").returns(
+    False
+)
+
+SkipCheck(check_infinitive, "Check infinitive").when_called_with(
+    "ete"
+).returns(False)
+
+SkipCheck(check_infinitive, "Check infinitive").when_called_with(
+    "sais"
+).returns(False)
+
+SkipCheck(check_infinitive, "Check infinitive").when_called_with(
+    "allons"
+).returns(False)
 
 
 # Exercise 7
@@ -164,17 +215,13 @@ def test_check_infinitive():
 #  input (retaining the order)
 
 
-@pytest.mark.skip()
-def test_collect_plurals():
-    assert collect_plurals(["dogs", "cat", "apples", "kittens", "kiwi"]) == [
-        "dogs",
-        "apples",
-        "kittens",
-    ]
+SkipCheck(collect_plurals, "Collect plurals").when_called_with(
+    ["dogs", "cat", "apples", "kittens", "kiwi"]
+).returns(["dogs", "apples", "kittens"])
 
-    assert collect_plurals(
-        ["abcs", "humans", "thoughts", "cloud", "computer", "cups"]
-    ) == ["abcs", "humans", "thoughts", "cups"]
+SkipCheck(collect_plurals, "Collect plurals").when_called_with(
+    ["abcs", "humans", "thoughts", "cloud", "computer", "cups"]
+).returns(["abcs", "humans", "thoughts", "cups"])
 
 
 # Exercise 8
@@ -186,15 +233,16 @@ def test_collect_plurals():
 #  to True
 
 
-@pytest.mark.skip()
-def test_make_all_admins():
-    users = [
+SkipCheck(make_all_admins, "Make all admins").when_called_with(
+    [
         {"name": "Barry", "admin": False},
         {"name": "Sandeep", "admin": True},
         {"name": "Kavita", "admin": False},
     ]
-    assert make_all_admins(users) == [
+).returns(
+    [
         {"name": "Barry", "admin": True},
         {"name": "Sandeep", "admin": True},
         {"name": "Kavita", "admin": True},
     ]
+)
