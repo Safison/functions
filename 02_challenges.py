@@ -3,7 +3,7 @@ from test_api.checks import Check, SkipCheck
 
 # Challenge 0
 # This function should return the product of two passed numbers.
-def multiply():
+def multiply(num_1, num_2):
     pass
 
 

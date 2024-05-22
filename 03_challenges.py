@@ -4,7 +4,7 @@ from test_api.checks import Check, SkipCheck
 # Exercise 0
 # This function should take a list as an argument and return True if the list
 #  is empty, False otherwise.
-def is_empty_list():
+def is_empty_list(list_to_check):
     pass
 
 

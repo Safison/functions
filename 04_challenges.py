@@ -7,6 +7,9 @@ from test_api.checks import Check, SkipCheck
 #  False otherwise
 
 
+# Define function here...
+
+
 Check(check_if_key_exists, "Test if key exists").when_called_with(
     {"name": "jonny", "age": 32}, "name"
 ).returns(True)
@@ -23,6 +26,8 @@ Check(check_if_key_exists, "Test if key exists").when_called_with(
 # Write a function, create_dict, that takes a list consisting of two elements
 #  representing a key / value pair as its argument
 # It should return a dictionary with a single key based on the input
+
+# Define function here...
 
 
 SkipCheck(create_dict, "Create dictionary").when_called_with(
@@ -42,6 +47,8 @@ SkipCheck(create_dict, "Create dictionary").when_called_with(
 # Write a function, get_first_n_items, that takes two arguments, a list and
 #  a number 'n'
 # It should return a new list containing the first 'n' items of the given list
+
+# Define function here...
 
 
 SkipCheck(get_first_n_items, "Get first n items").when_called_with(
@@ -64,6 +71,8 @@ SkipCheck(get_first_n_items, "Get first n items").when_called_with(
 # You don't need to utilise an dictionary here, but think about how you
 #  could do so
 
+# Define function here...
+
 
 SkipCheck(create_arrow, "Create arrow").when_called_with("left").returns("←")
 
@@ -79,6 +88,8 @@ SkipCheck(create_arrow, "Create arrow").when_called_with("down").returns("↓")
 #  index value
 # It should return a new list where the item that was previously at the
 #  given index is now at the end of the list
+
+# Define function here...
 
 
 SkipCheck(move_item_to_end, "Move item to end").when_called_with(
@@ -109,6 +120,8 @@ SkipCheck(move_item_to_end, "Move item to end").when_called_with(
 # }
 # The user's age should be increased by 1 to reflect their recent birthday
 # NOTE: This function does NOT need to return anything!
+
+# Define function here...
 
 
 SkipCheck(update_user_age, "Update user age").when_called_with(
@@ -162,6 +175,8 @@ SkipCheck(update_user_age, "Update user age").when_called_with(
 # It should return True if it is an infinitive verb, and False otherwise
 # A French infinitive verb is a word that ends with either "re", "ir" or "er"
 
+# Define function here...
+
 
 SkipCheck(check_infinitive, "Check infinitive").when_called_with(
     "manger"
@@ -214,6 +229,8 @@ SkipCheck(check_infinitive, "Check infinitive").when_called_with(
 # It should return a list containing all strings ending with an 's' from the
 #  input (retaining the order)
 
+# Define function here...
+
 
 SkipCheck(collect_plurals, "Collect plurals").when_called_with(
     ["dogs", "cat", "apples", "kittens", "kiwi"]
@@ -231,6 +248,8 @@ SkipCheck(collect_plurals, "Collect plurals").when_called_with(
 # The 'admin' key will have a boolean value
 # You should return a list of user objects each with the 'admin' key set
 #  to True
+
+# Define function here...
 
 
 SkipCheck(make_all_admins, "Make all admins").when_called_with(
