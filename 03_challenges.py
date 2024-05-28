@@ -1,24 +1,20 @@
-from test_api.checks import Check, SkipCheck
+from test_api.checks import run_test, skip_test, format_err_msg
 
 
 # Exercise 0
 # This function should take a list as an argument and return True if the list
 #  is empty, False otherwise.
-def is_empty_list(list_to_check):
+def is_empty_list():
     pass
 
 
-Check(
-    is_empty_list, "return True if the list is empty, False otherwise"
-).when_called_with([]).returns(True)
-
-Check(
-    is_empty_list, "return True if the list is empty, False otherwise"
-).when_called_with(["a", "b", "c", "d"]).returns(False)
-
-Check(
-    is_empty_list, "return True if the list is empty, False otherwise"
-).when_called_with(["a"]).returns(False)
+@run_test
+def test_is_empty_list():
+    assert is_empty_list([]) is True, format_err_msg(True, is_empty_list([]))
+    assert is_empty_list(["a", "b", "c", "d"]) is False, \
+        format_err_msg(False, is_empty_list(["a", "b", "c", "d"]))
+    assert is_empty_list(["a"]) is False, \
+        format_err_msg(False, is_empty_list(["a"]))
 
 
 # Exercise 1
@@ -27,35 +23,38 @@ Check(
 
 # A person will take this form:
 # {
-#   "name": "Danika",
+#   "name": "Mitch",
 #   "likes_to_code": True
 # }
 
-# If the 'likes_to_code' key is true, then return a string of the form
-#   "My name is Danika and I like to code."
+# If the 'likes_to_code' key is true, then you should return a string of the
+#   form "My name is Mitch and I like to code."
 
 
 # If the 'likes_to_code' key is false, the string should look like
-#   "My name is Danika and I don't like to code."
-
-
+#   "My name is Mitch and I don't like to code."
 def create_profile_description():
     pass
 
 
-SkipCheck(
-    create_profile_description,
-    "return a string describing a person and their coding preferences",
-).when_called_with({"name": "Danika", "likes_to_code": True}).returns(
-    "My name is Danika and I like to code."
-)
-
-SkipCheck(
-    create_profile_description,
-    "return a string describing a person and their coding preferences",
-).when_called_with({"name": "Alex", "likes_to_code": False}).returns(
-    "My name is Alex and I don't like to code."
-)
+@skip_test
+def test_create_profile_description():
+    assert (
+        create_profile_description({"name": "Danika", "likes_to_code": True})
+        == "My name is Danika and I like to code."
+    ), \
+        format_err_msg(
+            "My name is Danika and I like to code.",
+            create_profile_description(
+                {"name": "Danika", "likes_to_code": True}))
+    assert (
+        create_profile_description({"name": "Alex", "likes_to_code": False})
+        == "My name is Alex and I don't like to code."
+    ), \
+        format_err_msg(
+            "My name is Alex and I don't like to code.",
+            create_profile_description(
+                {"name": "Alex", "likes_to_code": False}))
 
 
 # Exercise 2
@@ -70,35 +69,22 @@ def read_traffic_light():
     pass
 
 
-SkipCheck(
-    read_traffic_light,
-    "return a message based on the traffic light colour",
-).when_called_with("green").returns("GO!")
+@skip_test
+def test_read_traffic_light():
+    assert read_traffic_light("green") == "GO!", \
+        format_err_msg('GO!', read_traffic_light("green"))
+    assert read_traffic_light("GREEN") == "GO!", \
+        format_err_msg('GO!', read_traffic_light("GREEN"))
 
-SkipCheck(
-    read_traffic_light,
-    "return a message based on the traffic light colour",
-).when_called_with("GREEN").returns("GO!")
+    assert read_traffic_light("amber") == "GET READY...", \
+        format_err_msg("GET READY...", read_traffic_light("amber"))
+    assert read_traffic_light("AMBER") == "GET READY...", \
+        format_err_msg("GET READY...", read_traffic_light("AMBER"))
 
-SkipCheck(
-    read_traffic_light,
-    "return a message based on the traffic light colour",
-).when_called_with("amber").returns("GET READY...")
-
-SkipCheck(
-    read_traffic_light,
-    "return a message based on the traffic light colour",
-).when_called_with("AMBER").returns("GET READY...")
-
-SkipCheck(
-    read_traffic_light,
-    "return a message based on the traffic light colour",
-).when_called_with("red").returns("STOP!")
-
-SkipCheck(
-    read_traffic_light,
-    "return a message based on the traffic light colour",
-).when_called_with("RED").returns("STOP!")
+    assert read_traffic_light("red") == "STOP!", \
+        format_err_msg("STOP!", read_traffic_light("red"))
+    assert read_traffic_light("RED") == "STOP!", \
+        format_err_msg("STOP!", read_traffic_light("RED"))
 
 
 # Exercise 3
@@ -108,25 +94,17 @@ def how_many_arguments():
     pass
 
 
-SkipCheck(
-    how_many_arguments,
-    "return the number of arguments passed into the function",
-).when_called_with("a", "b", "c").returns(3)
-
-SkipCheck(
-    how_many_arguments,
-    "return the number of arguments passed into the function",
-).when_called_with().returns(0)
-
-SkipCheck(
-    how_many_arguments,
-    "return the number of arguments passed into the function",
-).when_called_with(1, 2, 3, 4, 5).returns(5)
-
-SkipCheck(
-    how_many_arguments,
-    "return the number of arguments passed into the function",
-).when_called_with("the", "meaning", "of", "life", "is", 42).returns(6)
+@skip_test
+def test_how_many_arguments():
+    assert how_many_arguments("a", "b", "c") == 3, \
+        format_err_msg(3, how_many_arguments("a", "b", "c"))
+    assert how_many_arguments() == 0, \
+        format_err_msg(0, how_many_arguments())
+    assert how_many_arguments(1, 2, 3, 4, 5) == 5, \
+        format_err_msg(5, how_many_arguments(1, 2, 3, 4, 5))
+    assert how_many_arguments("the", "meaning", "of", "life", "is", 42) == 6, \
+        format_err_msg(8, how_many_arguments(
+            "the", "meaning", "of", "life", "is", 42))
 
 
 # Exercise 4
@@ -148,51 +126,41 @@ def update_coin_machine():
     pass
 
 
-SkipCheck(
-    update_coin_machine,
-    "return the updated coin machine",
-).when_called_with({"1p": 0, "2p": 0, "5p": 0, "10p": 0}, "1p").returns(
-    {"1p": 1, "2p": 0, "5p": 0, "10p": 0}
-)
+@skip_test
+def test_update_coin_machine():
+    assert update_coin_machine(
+        {"1p": 0, "2p": 0, "5p": 0, "10p": 0}, "1p"
+    ) == {"1p": 1, "2p": 0, "5p": 0, "10p": 0}, \
+        format_err_msg(
+            {"1p": 1, "2p": 0, "5p": 0, "10p": 0},
+            update_coin_machine({"1p": 0, "2p": 0, "5p": 0, "10p": 0}, "1p"))
+    assert update_coin_machine(
+        {"1p": 0, "2p": 0, "5p": 0, "10p": 0}, "2p"
+    ) == {"1p": 0, "2p": 1, "5p": 0, "10p": 0}, \
+        format_err_msg(
+            {"1p": 0, "2p": 1, "5p": 0, "10p": 0},
+            update_coin_machine({"1p": 0, "2p": 0, "5p": 0, "10p": 0}, "2p"))
 
-SkipCheck(
-    update_coin_machine, "return the updated coin machine"
-).when_called_with({"1p": 0, "2p": 0, "5p": 0, "10p": 0}, "2p").returns(
-    {"1p": 0, "2p": 1, "5p": 0, "10p": 0}
-)
+    assert update_coin_machine(
+        {"1p": 0, "2p": 3, "5p": 0, "10p": 0}, "2p"
+    ) == {"1p": 0, "2p": 4, "5p": 0, "10p": 0}, \
+        format_err_msg(
+            {"1p": 0, "2p": 4, "5p": 0, "10p": 0},
+            update_coin_machine({"1p": 0, "2p": 3, "5p": 0, "10p": 0}, "2p"))
 
-SkipCheck(
-    update_coin_machine, "return the updated coin machine"
-).when_called_with({"1p": 0, "2p": 3, "5p": 0, "10p": 0}, "2p").returns(
-    {
-        "1p": 0,
-        "2p": 4,
-        "5p": 0,
-        "10p": 0,
-    }
-)
+    assert update_coin_machine(
+        {"1p": 0, "2p": 3, "5p": 10, "10p": 0}, "5p"
+    ) == {"1p": 0, "2p": 3, "5p": 11, "10p": 0}, \
+        format_err_msg(
+            {"1p": 0, "2p": 3, "5p": 11, "10p": 0},
+            update_coin_machine({"1p": 0, "2p": 3, "5p": 10, "10p": 0}, "5p"))
 
-SkipCheck(
-    update_coin_machine, "return the updated coin machine"
-).when_called_with({"1p": 0, "2p": 3, "5p": 10, "10p": 0}, "5p").returns(
-    {
-        "1p": 0,
-        "2p": 3,
-        "5p": 11,
-        "10p": 0,
-    }
-)
-
-SkipCheck(
-    update_coin_machine, "return the updated coin machine"
-).when_called_with({"1p": 0, "2p": 3, "5p": 10, "10p": 0}, "10p").returns(
-    {
-        "1p": 0,
-        "2p": 3,
-        "5p": 10,
-        "10p": 1,
-    }
-)
+    assert update_coin_machine(
+        {"1p": 0, "2p": 3, "5p": 10, "10p": 0}, "10p"
+    ) == {"1p": 0, "2p": 3, "5p": 10, "10p": 1}, \
+        format_err_msg(
+            {"1p": 0, "2p": 3, "5p": 10, "10p": 1},
+            update_coin_machine({"1p": 0, "2p": 3, "5p": 10, "10p": 0}, "10p"))
 
 
 # Exercise 5
@@ -204,40 +172,26 @@ SkipCheck(
 
 
 # If direction is "up" it should move 1 unit up (+ 1 in the y direction)
-# If the direction is "down" it should move 1 unit down(- 1 in the y direction)
-# If direction is "right" it should move 1 unit right (+1 in the x direction)
-# If the direction is "left" it should move 1 unit left(- 1 in the x direction)
+# If the direction is "down" it should move 1 unit down (-1 in the y direction)
+# If the direction is "right" it should move 1 unit right (+1 in the x direction)
+# If the direction is "left" it should move 1 unit left (-1 in the x direction)
 def update_position():
     pass
 
 
-SkipCheck(
-    update_position,
-    "return the updated position",
-).when_called_with(
-    [10, 10], "up"
-).returns([10, 11])
+@skip_test
+def test_update_position():
+    assert update_position([10, 10], "up") == [10, 11], \
+        format_err_msg([10, 11], update_position([10, 10], "up"))
 
-SkipCheck(
-    update_position,
-    "return the updated position",
-).when_called_with(
-    [0, 0], "down"
-).returns([0, -1])
+    assert update_position([0, 0], "down") == [0, -1], \
+        format_err_msg([0, -1], update_position([0, 0], "down"))
 
-SkipCheck(
-    update_position,
-    "return the updated position",
-).when_called_with(
-    [3, 3], "left"
-).returns([2, 3])
+    assert update_position([3, 3], "left") == [2, 3], \
+        format_err_msg([2, 3], update_position([3, 3], "left"))
 
-SkipCheck(
-    update_position,
-    "return the updated position",
-).when_called_with(
-    [7, 50], "right"
-).returns([8, 50])
+    assert update_position([7, 50], "right") == [8, 50], \
+        format_err_msg([8, 50], update_position([7, 50], "right"))
 
 
 # Exercise 6
@@ -247,33 +201,19 @@ def is_falsy():
     pass
 
 
-SkipCheck(
-    is_falsy, "return true if the argument is falsy, false otherwise"
-).when_called_with(False).returns(True)
-SkipCheck(
-    is_falsy, "return true if the argument is falsy, false otherwise"
-).when_called_with(True).returns(False)
-SkipCheck(
-    is_falsy, "return true if the argument is falsy, false otherwise"
-).when_called_with("").returns(True)
-SkipCheck(
-    is_falsy, "return true if the argument is falsy, false otherwise"
-).when_called_with(0).returns(True)
-SkipCheck(
-    is_falsy, "return true if the argument is falsy, false otherwise"
-).when_called_with({}).returns(True)
-SkipCheck(
-    is_falsy, "return true if the argument is falsy, false otherwise"
-).when_called_with({"a": 1}).returns(False)
-SkipCheck(
-    is_falsy, "return true if the argument is falsy, false otherwise"
-).when_called_with([]).returns(True)
-SkipCheck(
-    is_falsy, "return true if the argument is falsy, false otherwise"
-).when_called_with([1, 2, 3]).returns(False)
-SkipCheck(
-    is_falsy, "return true if the argument is falsy, false otherwise"
-).when_called_with(None).returns(True)
+@skip_test
+def test_is_falsy():
+    assert is_falsy(False) is True, format_err_msg(True, is_falsy(False))
+    assert is_falsy(True) is False, format_err_msg(False, is_falsy(True))
+    assert is_falsy("") is True, format_err_msg(True, is_falsy(''))
+    assert is_falsy(0) is True, format_err_msg(True, is_falsy(0))
+    assert is_falsy({}) is True, format_err_msg(True, is_falsy({}))
+    assert is_falsy({"a": 1}) is False, \
+        format_err_msg(False, is_falsy({"a": 1}))
+    assert is_falsy([]) is True, format_err_msg(True, is_falsy([]))
+    assert is_falsy([1, 2, 3]) is False, \
+        format_err_msg(False, is_falsy([1, 2, 3]))
+    assert is_falsy(None) is True, format_err_msg(True, is_falsy(None))
 
 
 # Exercise 7
@@ -288,25 +228,14 @@ def check_game():
     pass
 
 
-SkipCheck(
-    check_game, "return True if the game has been won, False otherwise"
-).when_called_with(3, "H").returns(True)
-
-SkipCheck(
-    check_game, "return True if the game has been won, False otherwise"
-).when_called_with(4, "H").returns(True)
-
-SkipCheck(
-    check_game, "return True if the game has been won, False otherwise"
-).when_called_with(5, "H").returns(True)
-
-SkipCheck(
-    check_game, "return True if the game has been won, False otherwise"
-).when_called_with(6, "H").returns(True)
-
-SkipCheck(
-    check_game, "return True if the game has been won, False otherwise"
-).when_called_with(6, "T").returns(False)
+@skip_test
+def test_check_game():
+    assert check_game(3, "H") is True, format_err_msg(True, check_game(3, "H"))
+    assert check_game(4, "H") is True, format_err_msg(True, check_game(4, "H"))
+    assert check_game(5, "H") is True, format_err_msg(True, check_game(5, "H"))
+    assert check_game(6, "H") is True, format_err_msg(True, check_game(6, "H"))
+    assert check_game(6, "T") is False, \
+        format_err_msg(False, check_game(6, "T"))
 
 
 # Exercise 8
@@ -322,31 +251,47 @@ def add_coins():
     pass
 
 
-SkipCheck(
-    add_coins, "return an updated version of the given list with the coin"
-).when_called_with([[], [], [], []], "1p").returns([["1p"], [], [], []])
-SkipCheck(
-    add_coins, "return an updated version of the given list with the coin"
-).when_called_with([[], [], [], []], "2p").returns([[], ["2p"], [], []])
-SkipCheck(
-    add_coins, "return an updated version of the given list with the coin"
-).when_called_with([[], ["2p"], [], []], "2p").returns(
-    [[], ["2p", "2p"], [], []]
-)
-SkipCheck(
-    add_coins, "return an updated version of the given list with the coin"
-).when_called_with([[], [], [], []], "5p").returns([[], [], ["5p"], []])
-SkipCheck(
-    add_coins, "return an updated version of the given list with the coin"
-).when_called_with([["1p"], [], [], ["10p", "10p"]], "2p").returns(
-    [["1p"], ["2p"], [], ["10p", "10p"]]
-)
-SkipCheck(
-    add_coins, "return an updated version of the given list with the coin"
-).when_called_with([[], [], ["5p", "5p"], []], "5p").returns(
-    [[], [], ["5p", "5p", "5p"], []]
-)
+@skip_test
+def test_add_coins():
+    assert add_coins([[], [], [], []], "1p") == [["1p"], [], [], []], \
+        format_err_msg([["1p"], [], [], []], add_coins([[], [], [], []], "1p"))
+
+    assert add_coins([[], [], [], []], "2p") == [[], ["2p"], [], []], \
+        format_err_msg([[], ["2p"], [], []], add_coins([[], [], [], []], "2p"))
+
+    assert add_coins(
+        [[], ["2p"], [], []], "2p") == [[], ["2p", "2p"], [], []], \
+        format_err_msg(
+            [[], ["2p", "2p"], [], []], add_coins([[], ["2p"], [], []], "2p"))
+
+    assert add_coins([[], [], [], []], "5p") == [[], [], ["5p"], []], \
+        format_err_msg([[], [], ["5p"], []], add_coins([[], [], [], []], "5p"))
+
+    assert add_coins([["1p"], [], [], ["10p", "10p"]], "2p") == \
+        [["1p"], ["2p"], [], ["10p", "10p"]], \
+        format_err_msg(
+        [["1p"], ["2p"], [], ["10p", "10p"]],
+        add_coins([["1p"], [], [], ["10p", "10p"]], "2p"))
+
+    assert add_coins([[], [], ["5p", "5p"], []], "5p") == \
+        [[], [], ["5p", "5p", "5p"], []], \
+        format_err_msg(
+        [[], [], ["5p", "5p", "5p"], []],
+        add_coins([[], [], ["5p", "5p"], []], "5p"))
 
 
 # Mark your progress on the Learn 2 Code platform before moving on to the
 #  next set of challenges!
+
+
+# DO NOT CHANGE CODE BELOW THIS LINE
+if __name__ == '__main__':
+    test_is_empty_list()
+    test_create_profile_description()
+    test_read_traffic_light()
+    test_how_many_arguments()
+    test_update_coin_machine()
+    test_update_position()
+    test_is_falsy()
+    test_check_game()
+    test_add_coins()
