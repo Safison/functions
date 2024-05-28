@@ -1,4 +1,5 @@
-from test_api.checks import Check, SkipCheck
+from test_api.checks import run_test, skip_test, format_err_msg
+
 
 # Exercise 0
 # Write a function, check_if_key_exists, that takes a dictionary and a key as
@@ -7,40 +8,37 @@ from test_api.checks import Check, SkipCheck
 #  False otherwise
 
 
-# Define function here...
+@run_test
+def test_check_if_key_exists():
+    assert check_if_key_exists({"name": "jonny", "age": 32}, "name") is True, \
+        format_err_msg(
+            True, check_if_key_exists({"name": "jonny", "age": 32}, "name"))
+    assert check_if_key_exists({"name": "jonny", "age": 32}, "age") is True, \
+        format_err_msg(
+            True, check_if_key_exists({"name": "jonny", "age": 32}, "age"))
+    assert check_if_key_exists(
+        {"name": "jonny", "age": 32}, "pets") is False, \
+        format_err_msg(
+            False, check_if_key_exists({"name": "jonny", "age": 32}, "pets"))
 
-
-Check(check_if_key_exists, "Test if key exists").when_called_with(
-    {"name": "jonny", "age": 32}, "name"
-).returns(True)
-
-Check(check_if_key_exists, "Test if key exists").when_called_with(
-    {"name": "jonny", "age": 32}, "age"
-).returns(True)
-
-Check(check_if_key_exists, "Test if key exists").when_called_with(
-    {"name": "jonny", "age": 32}, "pets"
-).returns(False)
 
 # Exercise 1
 # Write a function, create_dict, that takes a list consisting of two elements
 #  representing a key / value pair as its argument
 # It should return a dictionary with a single key based on the input
 
-# Define function here...
 
+@skip_test
+def test_create_dict():
+    assert create_dict(["name", "shaq"]) == {"name": "shaq"}, \
+        format_err_msg({"name": "shaq"}, create_dict(["name", "shaq"]))
 
-SkipCheck(create_dict, "Create dictionary").when_called_with(
-    ["name", "shaq"]
-).returns({"name": "shaq"})
+    assert create_dict(["fruit", "apple"]) == {"fruit": "apple"}, \
+        format_err_msg({"fruit": "apple"}, create_dict(["fruit", "apple"]))
 
-SkipCheck(create_dict, "Create dictionary").when_called_with(
-    ["fruit", "apple"]
-).returns({"fruit": "apple"})
-
-SkipCheck(create_dict, "Create dictionary").when_called_with(
-    ["language", "haskell"]
-).returns({"language": "haskell"})
+    assert create_dict(["language", "haskell"]) == {"language": "haskell"}, \
+        format_err_msg({"language": "haskell"},
+                       create_dict(["language", "haskell"]))
 
 
 # Exercise 2
@@ -48,20 +46,20 @@ SkipCheck(create_dict, "Create dictionary").when_called_with(
 #  a number 'n'
 # It should return a new list containing the first 'n' items of the given list
 
-# Define function here...
 
+@skip_test
+def test_get_first_n_items():
+    assert get_first_n_items(["a", "b", "c", "d"], 2) == ["a", "b"], \
+        format_err_msg(["a", "b"], get_first_n_items(["a", "b", "c", "d"], 2))
 
-SkipCheck(get_first_n_items, "Get first n items").when_called_with(
-    ["a", "b", "c", "d"], 2
-).returns(["a", "b"])
+    assert get_first_n_items(["apple", "banana", "pear", "kiwi"], 0) == [], \
+        format_err_msg([], get_first_n_items(
+            ["apple", "banana", "pear", "kiwi"], 0))
 
-SkipCheck(get_first_n_items, "Get first n items").when_called_with(
-    ["apple", "banana", "pear", "kiwi"], 0
-).returns([])
-
-SkipCheck(get_first_n_items, "Get first n items").when_called_with(
-    ["apple", "banana", "pear", "kiwi"], 3
-).returns(["apple", "banana", "pear"])
+    assert get_first_n_items(["apple", "banana", "pear", "kiwi"], 3) == \
+        ["apple", "banana", "pear"], \
+        format_err_msg(["apple", "banana", "pear"], get_first_n_items(
+            ["apple", "banana", "pear", "kiwi"], 3))
 
 
 # Exercise 3
@@ -71,16 +69,17 @@ SkipCheck(get_first_n_items, "Get first n items").when_called_with(
 # You don't need to utilise an dictionary here, but think about how you
 #  could do so
 
-# Define function here...
 
-
-SkipCheck(create_arrow, "Create arrow").when_called_with("left").returns("←")
-
-SkipCheck(create_arrow, "Create arrow").when_called_with("right").returns("→")
-
-SkipCheck(create_arrow, "Create arrow").when_called_with("up").returns("↑")
-
-SkipCheck(create_arrow, "Create arrow").when_called_with("down").returns("↓")
+@skip_test
+def test_create_arrow():
+    assert create_arrow("left") == "←", \
+        format_err_msg("←", create_arrow("left"))
+    assert create_arrow("right") == "→", \
+        format_err_msg("→", create_arrow("right"))
+    assert create_arrow("up") == "↑", \
+        format_err_msg("↑", create_arrow("up"))
+    assert create_arrow("down") == "↓", \
+        format_err_msg("↓", create_arrow("down"))
 
 
 # Exercise 4
@@ -89,20 +88,19 @@ SkipCheck(create_arrow, "Create arrow").when_called_with("down").returns("↓")
 # It should return a new list where the item that was previously at the
 #  given index is now at the end of the list
 
-# Define function here...
 
+@skip_test
+def test_move_item_to_end():
+    assert move_item_to_end(["a", "b", "c"], 0) == ["b", "c", "a"], \
+        format_err_msg(["b", "c", "a"], move_item_to_end(["a", "b", "c"], 0))
 
-SkipCheck(move_item_to_end, "Move item to end").when_called_with(
-    ["a", "b", "c"], 0
-).returns(["b", "c", "a"])
+    assert move_item_to_end(["a", "b", "c", "d"], 2) == ["a", "b", "d", "c"], \
+        format_err_msg(["a", "b", "d", "c"],
+                       move_item_to_end(["a", "b", "c", "d"], 2))
 
-SkipCheck(move_item_to_end, "Move item to end").when_called_with(
-    ["a", "b", "c", "d"], 2
-).returns(["a", "b", "d", "c"])
-
-SkipCheck(move_item_to_end, "Move item to end").when_called_with(
-    ["a", "b", "c", "d"], 1
-).returns(["a", "c", "d", "b"])
+    assert move_item_to_end(["a", "b", "c", "d"], 1) == ["a", "c", "d", "b"], \
+        format_err_msg(["a", "c", "d", "b"],
+                       move_item_to_end(["a", "b", "c", "d"], 1))
 
 
 # Exercise 5
@@ -121,11 +119,10 @@ SkipCheck(move_item_to_end, "Move item to end").when_called_with(
 # The user's age should be increased by 1 to reflect their recent birthday
 # NOTE: This function does NOT need to return anything!
 
-# Define function here...
 
-
-SkipCheck(update_user_age, "Update user age").when_called_with(
-    {
+@skip_test
+def test_update_user_age():
+    user1 = {
         "admin": False,
         "username": "xoxoAlexoxo",
         "personal_details": {
@@ -134,8 +131,8 @@ SkipCheck(update_user_age, "Update user age").when_called_with(
             "fav_food": "gooseberry fool",
         },
     }
-).mutates_input(
-    {
+    update_user_age(user1)
+    assert user1 == {
         "admin": False,
         "username": "xoxoAlexoxo",
         "personal_details": {
@@ -143,11 +140,16 @@ SkipCheck(update_user_age, "Update user age").when_called_with(
             "age": 40,
             "fav_food": "gooseberry fool",
         },
-    }
-)
+    }, format_err_msg({
+        "admin": False,
+        "username": "xoxoAlexoxo",
+        "personal_details": {
+            "name": "Alex",
+            "age": 40,
+            "fav_food": "gooseberry fool",
+        }}, user1)
 
-SkipCheck(update_user_age, "Update user age").when_called_with(
-    {
+    user2 = {
         "admin": True,
         "username": "brum4life",
         "personal_details": {
@@ -156,8 +158,8 @@ SkipCheck(update_user_age, "Update user age").when_called_with(
             "fav_food": "caviar",
         },
     }
-).mutates_input(
-    {
+    update_user_age(user2)
+    assert user2 == {
         "admin": True,
         "username": "brum4life",
         "personal_details": {
@@ -165,8 +167,15 @@ SkipCheck(update_user_age, "Update user age").when_called_with(
             "age": 20,
             "fav_food": "caviar",
         },
-    }
-)
+    }, format_err_msg({
+        "admin": True,
+        "username": "brum4life",
+        "personal_details": {
+            "name": "Poonam",
+            "age": 20,
+            "fav_food": "caviar",
+        },
+    }, user2)
 
 
 # Exercise 6
@@ -175,52 +184,32 @@ SkipCheck(update_user_age, "Update user age").when_called_with(
 # It should return True if it is an infinitive verb, and False otherwise
 # A French infinitive verb is a word that ends with either "re", "ir" or "er"
 
-# Define function here...
 
+@skip_test
+def test_check_infinitive():
+    assert check_infinitive("manger") is True, \
+        format_err_msg(True, check_infinitive("manger"))
+    assert check_infinitive("faire") is True, \
+        format_err_msg(True, check_infinitive("faire"))
+    assert check_infinitive("aller") is True, \
+        format_err_msg(True, check_infinitive("aller"))
+    assert check_infinitive("finir") is True, \
+        format_err_msg(True, check_infinitive("finir"))
+    assert check_infinitive("rendre") is True, \
+        format_err_msg(True, check_infinitive("rendre"))
+    assert check_infinitive("savoir") is True, \
+        format_err_msg(True, check_infinitive("savoir"))
 
-SkipCheck(check_infinitive, "Check infinitive").when_called_with(
-    "manger"
-).returns(True)
-
-SkipCheck(check_infinitive, "Check infinitive").when_called_with(
-    "faire"
-).returns(True)
-
-SkipCheck(check_infinitive, "Check infinitive").when_called_with(
-    "aller"
-).returns(True)
-
-SkipCheck(check_infinitive, "Check infinitive").when_called_with(
-    "finir"
-).returns(True)
-
-SkipCheck(check_infinitive, "Check infinitive").when_called_with(
-    "rendre"
-).returns(True)
-
-SkipCheck(check_infinitive, "Check infinitive").when_called_with(
-    "savoir"
-).returns(True)
-
-SkipCheck(check_infinitive, "Check infinitive").when_called_with(
-    "suis"
-).returns(False)
-
-SkipCheck(check_infinitive, "Check infinitive").when_called_with("ai").returns(
-    False
-)
-
-SkipCheck(check_infinitive, "Check infinitive").when_called_with(
-    "ete"
-).returns(False)
-
-SkipCheck(check_infinitive, "Check infinitive").when_called_with(
-    "sais"
-).returns(False)
-
-SkipCheck(check_infinitive, "Check infinitive").when_called_with(
-    "allons"
-).returns(False)
+    assert check_infinitive("suis") is False, \
+        format_err_msg(False, check_infinitive("suis"))
+    assert check_infinitive("ai") is False, \
+        format_err_msg(False, check_infinitive("ai"))
+    assert check_infinitive("ete") is False, \
+        format_err_msg(False, check_infinitive("ete"))
+    assert check_infinitive("sais") is False, \
+        format_err_msg(False, check_infinitive("sais"))
+    assert check_infinitive("allons") is False, \
+        format_err_msg(False, check_infinitive("allons"))
 
 
 # Exercise 7
@@ -229,16 +218,22 @@ SkipCheck(check_infinitive, "Check infinitive").when_called_with(
 # It should return a list containing all strings ending with an 's' from the
 #  input (retaining the order)
 
-# Define function here...
 
+@skip_test
+def test_collect_plurals():
+    assert collect_plurals(["dogs", "cat", "apples", "kittens", "kiwi"]) == \
+        ["dogs", "apples", "kittens"], \
+        format_err_msg(
+            ["dogs", "apples", "kittens"],
+            collect_plurals(["dogs", "cat", "apples", "kittens", "kiwi"]))
 
-SkipCheck(collect_plurals, "Collect plurals").when_called_with(
-    ["dogs", "cat", "apples", "kittens", "kiwi"]
-).returns(["dogs", "apples", "kittens"])
-
-SkipCheck(collect_plurals, "Collect plurals").when_called_with(
-    ["abcs", "humans", "thoughts", "cloud", "computer", "cups"]
-).returns(["abcs", "humans", "thoughts", "cups"])
+    assert collect_plurals(
+        ["abcs", "humans", "thoughts", "cloud", "computer", "cups"]) == \
+        ["abcs", "humans", "thoughts", "cups"], \
+        format_err_msg(
+            ["abcs", "humans", "thoughts", "cups"],
+            collect_plurals(
+                ["abcs", "humans", "thoughts", "cloud", "computer", "cups"]))
 
 
 # Exercise 8
@@ -249,19 +244,33 @@ SkipCheck(collect_plurals, "Collect plurals").when_called_with(
 # You should return a list of user objects each with the 'admin' key set
 #  to True
 
-# Define function here...
 
-
-SkipCheck(make_all_admins, "Make all admins").when_called_with(
-    [
+@skip_test
+def test_make_all_admins():
+    users = [
         {"name": "Barry", "admin": False},
         {"name": "Sandeep", "admin": True},
         {"name": "Kavita", "admin": False},
     ]
-).returns(
-    [
+    assert make_all_admins(users) == [
         {"name": "Barry", "admin": True},
         {"name": "Sandeep", "admin": True},
         {"name": "Kavita", "admin": True},
-    ]
-)
+    ], format_err_msg([
+        {"name": "Barry", "admin": True},
+        {"name": "Sandeep", "admin": True},
+        {"name": "Kavita", "admin": True},
+    ], make_all_admins(users))
+
+
+# DO NOT CHANGE CODE BELOW THIS LINE
+if __name__ == '__main__':
+    test_check_if_key_exists()
+    test_create_dict()
+    test_get_first_n_items()
+    test_create_arrow()
+    test_move_item_to_end()
+    test_update_user_age()
+    test_check_infinitive()
+    test_collect_plurals()
+    test_make_all_admins()
