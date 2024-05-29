@@ -173,7 +173,8 @@ def test_update_coin_machine():
 
 # If direction is "up" it should move 1 unit up (+ 1 in the y direction)
 # If the direction is "down" it should move 1 unit down (-1 in the y direction)
-# If the direction is "right" it should move 1 unit right (+1 in the x direction)
+# If the direction is "right" it should move 1 unit right
+#   (+1 in the x direction)
 # If the direction is "left" it should move 1 unit left (-1 in the x direction)
 def update_position():
     pass
@@ -243,7 +244,7 @@ def test_check_game():
 #  other nested lists, each representing a slot in the collection in the
 #  following way:
 #        1p   2p   5p   10p
-#       [[],  [],  [],  []] <-- coinCollection
+#       [[],  [],  [],  []] <-- coin collection
 # This should take two arguments, a coin collection list and a
 #   string representing a coin, and return an updated version of the given
 #   list with the coin added at the appropriate position

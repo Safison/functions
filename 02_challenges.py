@@ -259,8 +259,8 @@ def test_collect_strings():
     assert collect_strings(["a", "b", "c"]) == ["a", "b", "c"], \
         format_err_msg(["a", "b", "c"], collect_strings(["a", "b", "c"]))
     assert collect_strings(["a", 10, "b", 1000, "c"]) == ["a", "b", "c"], \
-        format_err_msg(["a", 10, "b", 1000, "c"],
-                       collect_strings(["a", "b", "c"]))
+        format_err_msg(["a", "b", "c"],
+                       collect_strings(["a", 10, "b", 1000, "c"]))
 
 
 # DO NOT CHANGE CODE BELOW THIS LINE
