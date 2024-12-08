@@ -104,11 +104,12 @@ def test_read_traffic_light():
 # Exercise 3
 # This function should take any number of arguments and return the number of
 #  arguments passed into the function
-def how_many_arguments():
+def how_many_arguments(*args):
+    return len(args)
     pass
 
 
-@skip_test
+@run_test
 def test_how_many_arguments():
     assert how_many_arguments("a", "b", "c") == 3, \
         format_err_msg(3, how_many_arguments("a", "b", "c"))
@@ -136,11 +137,16 @@ def test_how_many_arguments():
 
 # You should 'add the provided coin to the machine by altering the associated
 #  key and returning the updated coin machine
-def update_coin_machine():
+def update_coin_machine(coin_machine,coin_string):
+    for coin in coin_machine:
+        if coin == coin_string:
+            coin_machine[coin]=coin_machine[coin]+1
+    return coin_machine
+
     pass
 
 
-@skip_test
+@run_test
 def test_update_coin_machine():
     assert update_coin_machine(
         {"1p": 0, "2p": 0, "5p": 0, "10p": 0}, "1p"
@@ -190,11 +196,23 @@ def test_update_coin_machine():
 # If the direction is "right" it should move 1 unit right
 #   (+1 in the x direction)
 # If the direction is "left" it should move 1 unit left (-1 in the x direction)
-def update_position():
-    pass
+def update_position(cordintates_list,direction):
+    if direction=="up":
+        cordintates_list[1] += 1
+        return cordintates_list
+    elif direction=="down":
+        cordintates_list[1] -= 1
+        return cordintates_list
+    elif direction=="right":
+        cordintates_list[0] += 1
+        return cordintates_list
+    elif direction=="left":
+        cordintates_list[0] -= 1
+        return cordintates_list
+    
 
 
-@skip_test
+@run_test
 def test_update_position():
     assert update_position([10, 10], "up") == [10, 11], \
         format_err_msg([10, 11], update_position([10, 10], "up"))
@@ -212,11 +230,16 @@ def test_update_position():
 # Exercise 6
 # This function should take any value as an argument, and return true if it is
 #  falsy, and false otherwise
-def is_falsy():
+def is_falsy(val):
+    if not val:
+        return True
+    else:
+        return False
+    
     pass
 
 
-@skip_test
+@run_test
 def test_is_falsy():
     assert is_falsy(False) is True, format_err_msg(True, is_falsy(False))
     assert is_falsy(True) is False, format_err_msg(False, is_falsy(True))
@@ -239,11 +262,15 @@ def test_is_falsy():
 # The game is considered to be won if the dice roll is 3 or higher AND the
 #  coin toss is "H"
 # You should return True if the game has been won and False otherwise
-def check_game():
+def check_game(dice_roll_num, coint_toss_str):
+    if dice_roll_num >= 3 and coint_toss_str == 'H':
+        return True
+    else:
+        return False
     pass
 
 
-@skip_test
+@run_test
 def test_check_game():
     assert check_game(3, "H") is True, format_err_msg(True, check_game(3, "H"))
     assert check_game(4, "H") is True, format_err_msg(True, check_game(4, "H"))
@@ -262,11 +289,24 @@ def test_check_game():
 # This should take two arguments, a coin collection list and a
 #   string representing a coin, and return an updated version of the given
 #   list with the coin added at the appropriate position
-def add_coins():
-    pass
+def add_coins(list1, str1):
+   
+    if str1 == "1p":
+        list1[0].append(str1)
+        return list1
+    if str1 == "2p":
+        list1[1].append(str1)
+        return list1
+    if str1 == "5p":
+        list1[2].append(str1)
+        return list1
+    if str1 == "10p":
+        list1[3].append(str1)
+        return list1
+    # pass
 
 
-@skip_test
+@run_test
 def test_add_coins():
     assert add_coins([[], [], [], []], "1p") == [["1p"], [], [], []], \
         format_err_msg([["1p"], [], [], []], add_coins([[], [], [], []], "1p"))
