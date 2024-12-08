@@ -4,8 +4,8 @@ from test_api.checks import run_test, skip_test, format_err_msg
 # Exercise 0
 # This function should take a list as an argument and return True if the list
 #  is empty, False otherwise.
-def is_empty_list():
-    pass
+def is_empty_list(list1):
+    return False if list1 else True
 
 
 @run_test
@@ -33,11 +33,17 @@ def test_is_empty_list():
 
 # If the 'likes_to_code' key is false, the string should look like
 #   "My name is Mitch and I don't like to code."
-def create_profile_description():
-    pass
+def create_profile_description(person):
+
+    #if person["likes_to_code"]==True:
+     #   return (f"My name is {person["name"]} and I like to code.")
+    #else:
+     #   return (f"My name is {person["name"]} and I don't like to code.")
+    return f"My name is {person["name"]} and I like to code." if person["likes_to_code"] else f"My name is {person["name"]} and I don't like to code." 
 
 
-@skip_test
+#@skip_test
+@run_test
 def test_create_profile_description():
     assert (
         create_profile_description({"name": "Danika", "likes_to_code": True})
@@ -65,11 +71,19 @@ def test_create_profile_description():
 # You should return a corresponding message
 
 
-def read_traffic_light():
+def read_traffic_light(light):
+    if light == "red" or light=="red".upper():
+        return "STOP!"
+    elif light == "amber" or light=="amber".upper():
+        return "GET READY..."
+    else:
+        return "GO!"
+
     pass
 
 
-@skip_test
+#@skip_test
+@run_test
 def test_read_traffic_light():
     assert read_traffic_light("green") == "GO!", \
         format_err_msg('GO!', read_traffic_light("green"))
