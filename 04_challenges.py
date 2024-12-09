@@ -6,7 +6,12 @@ from test_api.checks import run_test, skip_test, format_err_msg
 #  its arguments
 # It should return True if the dictionary contains the provided key,
 #  False otherwise
-
+def check_if_key_exists(dic, k):
+    # if k in dic:
+    #     return True
+    # else:
+    #     return False
+    return (True if k in dic else False)
 
 @run_test
 def test_check_if_key_exists():
@@ -26,9 +31,16 @@ def test_check_if_key_exists():
 # Write a function, create_dict, that takes a list consisting of two elements
 #  representing a key / value pair as its argument
 # It should return a dictionary with a single key based on the input
+def create_dict(list1):
+    # dic={}
+    key1=list1[0]
+    val1=list1[1]
+    dic ={
+        key1:val1
+    }
+    return dic
 
-
-@skip_test
+@run_test
 def test_create_dict():
     assert create_dict(["name", "shaq"]) == {"name": "shaq"}, \
         format_err_msg({"name": "shaq"}, create_dict(["name", "shaq"]))
@@ -46,8 +58,10 @@ def test_create_dict():
 #  a number 'n'
 # It should return a new list containing the first 'n' items of the given list
 
+def get_first_n_items(list1,num1):
+    return list1[0:num1]
 
-@skip_test
+@run_test
 def test_get_first_n_items():
     assert get_first_n_items(["a", "b", "c", "d"], 2) == ["a", "b"], \
         format_err_msg(["a", "b"], get_first_n_items(["a", "b", "c", "d"], 2))
@@ -87,9 +101,13 @@ def test_create_arrow():
 #  index value
 # It should return a new list where the item that was previously at the
 #  given index is now at the end of the list
+def move_item_to_end(list1, index):
+    #x = list1[index]
+    x= list1.pop(index)
+    list1.append(x)
+    return list1
 
-
-@skip_test
+@run_test
 def test_move_item_to_end():
     assert move_item_to_end(["a", "b", "c"], 0) == ["b", "c", "a"], \
         format_err_msg(["b", "c", "a"], move_item_to_end(["a", "b", "c"], 0))
@@ -119,8 +137,14 @@ def test_move_item_to_end():
 # The user's age should be increased by 1 to reflect their recent birthday
 # NOTE: This function does NOT need to return anything!
 
+def update_user_age(my_dict):
+        
+        user_age = my_dict["personal_details"]["age"]
+        user_age += 1
+        my_dict["personal_details"]["age"]=user_age
 
-@skip_test
+
+@run_test
 def test_update_user_age():
     user1 = {
         "admin": False,
@@ -183,9 +207,17 @@ def test_update_user_age():
 #  French word as an argument
 # It should return True if it is an infinitive verb, and False otherwise
 # A French infinitive verb is a word that ends with either "re", "ir" or "er"
-
-
-@skip_test
+def check_infinitive(french_word):
+    #return (True if french_word[-2:len(french_word)] == "re" or french_word[-2:-1:1] == "ir" or french_word[-2:-1:1] == "re" else False)
+    x= len(french_word)
+    # if french_word[x-2] + french_word[x-1]=="re" or french_word[x-2] + french_word[x-1]=="ir" or french_word[x-2] + french_word[x-1]=="er":
+    #     return True
+    # else:
+    #     return False
+    # print(french_word)
+    # print(french_word[-2:len(french_word)])  
+    return (True if french_word[-2:len(french_word)]=="re" or french_word[-2:len(french_word)]=="ir" or french_word[-2:len(french_word)]=="er" else False)
+@run_test
 def test_check_infinitive():
     assert check_infinitive("manger") is True, \
         format_err_msg(True, check_infinitive("manger"))
@@ -218,8 +250,13 @@ def test_check_infinitive():
 # It should return a list containing all strings ending with an 's' from the
 #  input (retaining the order)
 
-
-@skip_test
+def collect_plurals(words):
+    my_list=[]
+    for word in words:
+        if word.endswith('s'):
+            my_list.append(word)
+    return my_list
+@run_test
 def test_collect_plurals():
     assert collect_plurals(["dogs", "cat", "apples", "kittens", "kiwi"]) == \
         ["dogs", "apples", "kittens"], \
@@ -244,8 +281,12 @@ def test_collect_plurals():
 # You should return a list of user objects each with the 'admin' key set
 #  to True
 
+def make_all_admins(users):
+    for user in users:
+        user["admin"]=True
+    return users
 
-@skip_test
+@run_test
 def test_make_all_admins():
     users = [
         {"name": "Barry", "admin": False},
