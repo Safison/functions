@@ -12,6 +12,17 @@ from test_api.checks import run_test, skip_test, format_err_msg
 
 
 def find_total_of_multiples(limit):
+    
+    sum=0
+    if limit < 0:
+        return 0
+    else:
+        for i in range(limit):
+            if i % 3 ==0 or i % 5==0:
+                sum +=i
+            
+        return sum
+
     pass
 
 
@@ -62,11 +73,18 @@ def test_find_total_of_multiples():
 # count_printer_errors(control) should return "8/22"
 
 
-def count_printer_errors():
+def count_printer_errors(str1):
+    count=0
+    str_len=str(len(str1))
+    for char in str1:
+        if char not in 'abcdefghijklm':
+            count += 1
+    str_count=str(count)
+    return (str_count + '/' + str_len)
     pass
 
 
-@skip_test
+@run_test
 def test_count_printer_errors():
     # countPrinterErrors() should return zero for an empty control string
     assert count_printer_errors("") == "0/0", \
@@ -96,10 +114,19 @@ def test_count_printer_errors():
 
 
 def get_ordinal_suffix(num):
+    suffix_num=''
+    if num == 1 or num % 10 ==1 and num !=11:
+        return 'st'
+    elif num == 2 or num % 10 == 2 and num !=12:
+        return 'nd'
+    elif num == 3 or num % 10 ==3 and num != 13:
+        return'rd'
+    else:
+        return 'th'
     pass
 
 
-@skip_test
+@run_test
 def test_get_ordinal_suffix():
     # get_ordinal_suffix() returns 'st' when given 1
     assert get_ordinal_suffix(1) == "st", \
@@ -165,10 +192,16 @@ def test_get_ordinal_suffix():
 # This function should take a string as its argument and
 # return True if each character appears only once and False otherwise
 def contains_no_repeats(str):
+    count=0
+    flag=True
+    for i in range(len(str)):
+        if str[i] in str[i+1:]:
+            flag= False
+    return flag
     pass
 
 
-@skip_test
+@run_test
 def test_contains_no_repeats():
     # contains_no_repeats() returns True for an empty string
     assert contains_no_repeats("") is True, format_err_msg(True, "")
@@ -205,10 +238,16 @@ def test_contains_no_repeats():
 
 
 def check_usernames_available(usernames, *names):
+    flag=True
+    for name in names:
+        if name in usernames:
+            flag=False
+    return flag
+    
     pass
 
 
-@skip_test
+@run_test
 def test_check_usernames_available():
     # check_usernames_available returns True for a single available username
     assert check_usernames_available(["Roy", "Moss"], "Jen") is True, \
